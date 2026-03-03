@@ -24,6 +24,8 @@ import {
   Area
 } from 'recharts'
 import DashboardLayout from '../components/layout/DashboardLayout'
+import GDPTreemap from '../components/analytics/GDPTreemap'
+import PopulationPyramid from '../components/analytics/PopulationPyramid'
 
 // Mock data for analytics
 const nationalTrends = [
@@ -417,6 +419,11 @@ const Analytics: React.FC = () => {
           )}
         </div>
       </div>
+        {/* GDP Treemap & Population Pyramid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+          <GDPTreemap />
+          <PopulationPyramid />
+        </div>
     </DashboardLayout>
   )
 }

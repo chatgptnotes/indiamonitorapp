@@ -15,11 +15,12 @@ import {
 } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 import DashboardLayout from '../components/layout/DashboardLayout'
+import CustomDashboard from '../components/settings/CustomDashboard'
 import toast from 'react-hot-toast'
 
 const Settings: React.FC = () => {
   const { user } = useAuth()
-  const [activeTab, setActiveTab] = useState<'profile' | 'notifications' | 'appearance' | 'privacy' | 'data'>('profile')
+  const [activeTab, setActiveTab] = useState<'profile' | 'notifications' | 'appearance' | 'privacy' | 'data' | 'dashboard'>('profile')
   const [saved, setSaved] = useState(false)
   
   // Profile settings
@@ -439,6 +440,9 @@ const Settings: React.FC = () => {
                     </div>
                   </div>
                 </div>
+              )}
+              {activeTab === 'dashboard' && (
+                <CustomDashboard />
               )}
             </motion.div>
           </div>
