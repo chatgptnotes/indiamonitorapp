@@ -45,9 +45,9 @@ const stateComparison = [
 ]
 
 const sectorBreakdown = [
-  { name: 'Services', value: 54.3, color: '#00D4FF' },
-  { name: 'Industry', value: 25.8, color: '#00FF88' },
-  { name: 'Agriculture', value: 19.9, color: '#FFB800' }
+  { name: 'Services', value: 54.3, color: '#1E40AF' },
+  { name: 'Industry', value: 25.8, color: '#3B82F6' },
+  { name: 'Agriculture', value: 19.9, color: '#0EA5E9' }
 ]
 
 const environmentalTrends = [
@@ -76,29 +76,29 @@ const Analytics: React.FC = () => {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white">Analytics Dashboard</h1>
-            <p className="text-gray-400">Comprehensive insights and trends</p>
+            <h1 className="text-3xl font-bold text-gray-900">Analytics Dashboard</h1>
+            <p className="text-gray-600">Comprehensive insights and trends</p>
           </div>
           
           {/* Controls */}
           <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1 bg-gray-100 rounded-lg p-1">
               {['1M', '3M', '6M', '1Y'].map((range) => (
                 <button
                   key={range}
                   onClick={() => setTimeRange(range as any)}
-                  className={`px-3 py-1 text-sm rounded ${
+                  className={`px-3 py-1 text-sm rounded-md transition-colors ${
                     timeRange === range
-                      ? 'bg-electric-blue text-deep-navy'
-                      : 'bg-electric-blue/20 text-electric-blue hover:bg-electric-blue/30'
-                  } transition-colors`}
+                      ? 'bg-primary text-white shadow-sm'
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
                 >
                   {range}
                 </button>
               ))}
             </div>
             
-            <button className="flex items-center space-x-2 px-4 py-2 bg-electric-blue/20 text-electric-blue rounded-lg hover:bg-electric-blue/30 transition-colors">
+            <button className="flex items-center space-x-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors shadow-sm">
               <Download className="h-4 w-4" />
               <span>Export</span>
             </button>
@@ -106,15 +106,15 @@ const Analytics: React.FC = () => {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex space-x-1 bg-deep-navy/50 p-1 rounded-lg">
+        <div className="flex space-x-1 bg-gray-100 p-1 rounded-lg">
           {tabs.map(({ key, label, icon: Icon }) => (
             <button
               key={key}
               onClick={() => setSelectedTab(key as any)}
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
                 selectedTab === key
-                  ? 'bg-electric-blue text-deep-navy'
-                  : 'text-gray-300 hover:text-white hover:bg-electric-blue/10'
+                  ? 'bg-primary text-white shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200'
               }`}
             >
               <Icon className="h-4 w-4" />
@@ -132,36 +132,36 @@ const Analytics: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6 text-center"
+                  className="bg-white border border-gray-200 rounded-xl p-6 text-center shadow-sm"
                 >
-                  <TrendingUp className="h-8 w-8 text-electric-blue mx-auto mb-3" />
-                  <div className="text-3xl font-mono font-bold text-white mb-1">6.8%</div>
-                  <p className="text-gray-400">GDP Growth Rate</p>
-                  <div className="text-sm text-neon-green mt-1">+0.3% from last quarter</div>
+                  <TrendingUp className="h-8 w-8 text-primary mx-auto mb-3" />
+                  <div className="text-3xl font-mono font-bold text-gray-900 mb-1">6.8%</div>
+                  <p className="text-gray-500">GDP Growth Rate</p>
+                  <div className="text-sm text-green-600 mt-1">+0.3% from last quarter</div>
                 </motion.div>
 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6 text-center"
+                  className="bg-white border border-gray-200 rounded-xl p-6 text-center shadow-sm"
                 >
-                  <BarChart3 className="h-8 w-8 text-amber mx-auto mb-3" />
-                  <div className="text-3xl font-mono font-bold text-white mb-1">152</div>
-                  <p className="text-gray-400">National Avg AQI</p>
-                  <div className="text-sm text-alert-red mt-1">+8 from last month</div>
+                  <BarChart3 className="h-8 w-8 text-orange-500 mx-auto mb-3" />
+                  <div className="text-3xl font-mono font-bold text-gray-900 mb-1">152</div>
+                  <p className="text-gray-500">National Avg AQI</p>
+                  <div className="text-sm text-red-600 mt-1">+8 from last month</div>
                 </motion.div>
 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6 text-center"
+                  className="bg-white border border-gray-200 rounded-xl p-6 text-center shadow-sm"
                 >
-                  <Activity className="h-8 w-8 text-neon-green mx-auto mb-3" />
-                  <div className="text-3xl font-mono font-bold text-white mb-1">1.43B</div>
-                  <p className="text-gray-400">Population</p>
-                  <div className="text-sm text-electric-blue mt-1">+0.8M monthly growth</div>
+                  <Activity className="h-8 w-8 text-green-600 mx-auto mb-3" />
+                  <div className="text-3xl font-mono font-bold text-gray-900 mb-1">1.43B</div>
+                  <p className="text-gray-500">Population</p>
+                  <div className="text-sm text-primary mt-1">+0.8M monthly growth</div>
                 </motion.div>
               </div>
 
@@ -170,46 +170,47 @@ const Analytics: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6"
+                className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm"
               >
-                <h2 className="text-xl font-bold text-white mb-4">National Trends</h2>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">National Trends</h2>
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={nationalTrends}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#00D4FF20" />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
                       <XAxis 
                         dataKey="month" 
                         axisLine={false}
                         tickLine={false}
-                        tick={{ fontSize: 12, fill: '#9CA3AF' }}
+                        tick={{ fontSize: 12, fill: '#6B7280' }}
                       />
                       <YAxis 
                         axisLine={false}
                         tickLine={false}
-                        tick={{ fontSize: 12, fill: '#9CA3AF' }}
+                        tick={{ fontSize: 12, fill: '#6B7280' }}
                       />
                       <Tooltip
                         contentStyle={{
-                          backgroundColor: '#0A0E1A',
-                          border: '1px solid #00D4FF',
+                          backgroundColor: '#FFFFFF',
+                          border: '1px solid #D1D5DB',
                           borderRadius: '8px',
-                          fontSize: '12px'
+                          fontSize: '12px',
+                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
                         }}
                       />
                       <Line 
                         type="monotone" 
                         dataKey="gdp" 
-                        stroke="#00D4FF" 
+                        stroke="#1E40AF" 
                         strokeWidth={3}
-                        dot={{ fill: '#00D4FF', strokeWidth: 2, r: 4 }}
+                        dot={{ fill: '#1E40AF', strokeWidth: 2, r: 4 }}
                         name="GDP Growth (%)"
                       />
                       <Line 
                         type="monotone" 
                         dataKey="aqi" 
-                        stroke="#FFB800" 
+                        stroke="#F59E0B" 
                         strokeWidth={3}
-                        dot={{ fill: '#FFB800', strokeWidth: 2, r: 4 }}
+                        dot={{ fill: '#F59E0B', strokeWidth: 2, r: 4 }}
                         name="Average AQI"
                       />
                     </LineChart>
@@ -223,38 +224,39 @@ const Analytics: React.FC = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6"
+              className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm"
             >
-              <h2 className="text-xl font-bold text-white mb-4">Top States by GDP</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Top States by GDP</h2>
               <div className="h-96">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={stateComparison} layout="horizontal">
-                    <CartesianGrid strokeDasharray="3 3" stroke="#00D4FF20" />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
                     <XAxis 
                       type="number"
                       axisLine={false}
                       tickLine={false}
-                      tick={{ fontSize: 12, fill: '#9CA3AF' }}
+                      tick={{ fontSize: 12, fill: '#6B7280' }}
                     />
                     <YAxis 
                       type="category"
                       dataKey="state"
                       axisLine={false}
                       tickLine={false}
-                      tick={{ fontSize: 12, fill: '#9CA3AF' }}
+                      tick={{ fontSize: 12, fill: '#6B7280' }}
                       width={100}
                     />
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: '#0A0E1A',
-                        border: '1px solid #00D4FF',
+                        backgroundColor: '#FFFFFF',
+                        border: '1px solid #D1D5DB',
                         borderRadius: '8px',
-                        fontSize: '12px'
+                        fontSize: '12px',
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
                       }}
                     />
                     <Bar 
                       dataKey="gdp" 
-                      fill="#00D4FF"
+                      fill="#1E40AF"
                       radius={[0, 4, 4, 0]}
                       name="GDP (₹ Trillion)"
                     />
@@ -269,18 +271,19 @@ const Analytics: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6"
+                className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm"
               >
-                <h2 className="text-xl font-bold text-white mb-4">GDP by Sector</h2>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">GDP by Sector</h2>
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <RechartsPieChart>
                       <Tooltip
                         contentStyle={{
-                          backgroundColor: '#0A0E1A',
-                          border: '1px solid #00D4FF',
+                          backgroundColor: '#FFFFFF',
+                          border: '1px solid #D1D5DB',
                           borderRadius: '8px',
-                          fontSize: '12px'
+                          fontSize: '12px',
+                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
                         }}
                       />
                       <Pie
@@ -292,7 +295,7 @@ const Analytics: React.FC = () => {
                         outerRadius={100}
                         innerRadius={40}
                         strokeWidth={2}
-                        stroke="#0A0E1A"
+                        stroke="#FFFFFF"
                       >
                         {sectorBreakdown.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={entry.color} />
@@ -309,9 +312,9 @@ const Analytics: React.FC = () => {
                           className="w-3 h-3 rounded-full"
                           style={{ backgroundColor: sector.color }}
                         />
-                        <span className="text-gray-300 text-sm">{sector.name}</span>
+                        <span className="text-gray-700 text-sm">{sector.name}</span>
                       </div>
-                      <span className="text-white font-mono">{sector.value}%</span>
+                      <span className="text-gray-900 font-mono">{sector.value}%</span>
                     </div>
                   ))}
                 </div>
@@ -320,37 +323,37 @@ const Analytics: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6"
+                className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm"
               >
-                <h2 className="text-xl font-bold text-white mb-4">Sector Growth Trends</h2>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Sector Growth Trends</h2>
                 <div className="space-y-4">
-                  <div className="p-4 bg-electric-blue/5 border border-electric-blue/20 rounded-lg">
+                  <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-white font-medium">Services</span>
-                      <span className="text-neon-green text-sm">+8.2%</span>
+                      <span className="text-gray-900 font-medium">Services</span>
+                      <span className="text-green-600 text-sm font-medium">+8.2%</span>
                     </div>
-                    <div className="w-full bg-gray-700 rounded-full h-2">
-                      <div className="bg-electric-blue h-2 rounded-full" style={{ width: '82%' }}></div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="bg-primary h-2 rounded-full transition-all duration-700" style={{ width: '82%' }}></div>
                     </div>
                   </div>
                   
-                  <div className="p-4 bg-neon-green/5 border border-neon-green/20 rounded-lg">
+                  <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-white font-medium">Industry</span>
-                      <span className="text-neon-green text-sm">+6.5%</span>
+                      <span className="text-gray-900 font-medium">Industry</span>
+                      <span className="text-green-600 text-sm font-medium">+6.5%</span>
                     </div>
-                    <div className="w-full bg-gray-700 rounded-full h-2">
-                      <div className="bg-neon-green h-2 rounded-full" style={{ width: '65%' }}></div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="bg-green-600 h-2 rounded-full transition-all duration-700" style={{ width: '65%' }}></div>
                     </div>
                   </div>
                   
-                  <div className="p-4 bg-amber/5 border border-amber/20 rounded-lg">
+                  <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-white font-medium">Agriculture</span>
-                      <span className="text-amber text-sm">+3.1%</span>
+                      <span className="text-gray-900 font-medium">Agriculture</span>
+                      <span className="text-yellow-600 text-sm font-medium">+3.1%</span>
                     </div>
-                    <div className="w-full bg-gray-700 rounded-full h-2">
-                      <div className="bg-amber h-2 rounded-full" style={{ width: '31%' }}></div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="bg-yellow-500 h-2 rounded-full transition-all duration-700" style={{ width: '31%' }}></div>
                     </div>
                   </div>
                 </div>
@@ -362,38 +365,39 @@ const Analytics: React.FC = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6"
+              className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm"
             >
-              <h2 className="text-xl font-bold text-white mb-4">Environmental Indicators</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Environmental Indicators</h2>
               <div className="h-80">
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={environmentalTrends}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#00D4FF20" />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
                     <XAxis 
                       dataKey="month" 
                       axisLine={false}
                       tickLine={false}
-                      tick={{ fontSize: 12, fill: '#9CA3AF' }}
+                      tick={{ fontSize: 12, fill: '#6B7280' }}
                     />
                     <YAxis 
                       axisLine={false}
                       tickLine={false}
-                      tick={{ fontSize: 12, fill: '#9CA3AF' }}
+                      tick={{ fontSize: 12, fill: '#6B7280' }}
                     />
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: '#0A0E1A',
-                        border: '1px solid #00D4FF',
+                        backgroundColor: '#FFFFFF',
+                        border: '1px solid #D1D5DB',
                         borderRadius: '8px',
-                        fontSize: '12px'
+                        fontSize: '12px',
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
                       }}
                     />
                     <Area 
                       type="monotone" 
                       dataKey="renewableEnergy" 
                       stackId="1"
-                      stroke="#00FF88" 
-                      fill="#00FF88"
+                      stroke="#16A34A" 
+                      fill="#16A34A"
                       fillOpacity={0.3}
                       name="Renewable Energy (%)"
                     />
@@ -401,8 +405,8 @@ const Analytics: React.FC = () => {
                       type="monotone" 
                       dataKey="forestCover" 
                       stackId="2"
-                      stroke="#00D4FF" 
-                      fill="#00D4FF"
+                      stroke="#1E40AF" 
+                      fill="#1E40AF"
                       fillOpacity={0.3}
                       name="Forest Cover (%)"
                     />

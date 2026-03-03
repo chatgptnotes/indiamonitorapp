@@ -38,11 +38,11 @@ const StateDetail: React.FC = () => {
       <DashboardLayout>
         <div className="flex items-center justify-center h-full">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-white mb-4">State Not Found</h1>
-            <p className="text-gray-400 mb-6">The requested state could not be found.</p>
+            <h1 className="text-2xl font-bold text-gray-900 mb-4">State Not Found</h1>
+            <p className="text-gray-600 mb-6">The requested state could not be found.</p>
             <button
               onClick={() => navigate('/dashboard')}
-              className="px-6 py-2 bg-electric-blue text-deep-navy rounded-lg hover:bg-electric-blue/90 transition-colors"
+              className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
             >
               Back to Dashboard
             </button>
@@ -60,20 +60,20 @@ const StateDetail: React.FC = () => {
           <div className="flex items-center space-x-4">
             <button
               onClick={() => navigate('/dashboard')}
-              className="p-2 hover:bg-electric-blue/10 rounded-lg transition-colors"
+              className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
             >
-              <ArrowLeft className="h-5 w-5 text-electric-blue" />
+              <ArrowLeft className="h-5 w-5 text-gray-600" />
             </button>
             <div>
-              <h1 className="text-3xl font-bold text-white">{state.name}</h1>
-              <p className="text-gray-400">Capital: {state.capital}</p>
+              <h1 className="text-3xl font-bold text-gray-900">{state.name}</h1>
+              <p className="text-gray-600">Capital: {state.capital}</p>
             </div>
           </div>
           <div className="text-right">
-            <div className="text-2xl font-mono font-bold text-electric-blue">
+            <div className="text-2xl font-mono font-bold text-primary">
               {state.code}
             </div>
-            <p className="text-sm text-gray-400">State Code</p>
+            <p className="text-sm text-gray-500">State Code</p>
           </div>
         </div>
 
@@ -83,52 +83,52 @@ const StateDetail: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6 text-center"
+            className="bg-white border border-gray-200 rounded-xl p-6 text-center shadow-sm"
           >
-            <Users className="h-8 w-8 text-electric-blue mx-auto mb-3" />
-            <div className="text-2xl font-mono font-bold text-white mb-1">
+            <Users className="h-8 w-8 text-primary mx-auto mb-3" />
+            <div className="text-2xl font-mono font-bold text-gray-900 mb-1">
               {state.population ? (state.population / 1000000).toFixed(1) + 'M' : 'N/A'}
             </div>
-            <p className="text-sm text-gray-400">Population</p>
+            <p className="text-sm text-gray-500">Population</p>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6 text-center"
+            className="bg-white border border-gray-200 rounded-xl p-6 text-center shadow-sm"
           >
-            <BookOpen className="h-8 w-8 text-neon-green mx-auto mb-3" />
-            <div className="text-2xl font-mono font-bold text-white mb-1">
+            <BookOpen className="h-8 w-8 text-green-600 mx-auto mb-3" />
+            <div className="text-2xl font-mono font-bold text-gray-900 mb-1">
               {state.literacy_rate ? state.literacy_rate.toFixed(1) + '%' : 'N/A'}
             </div>
-            <p className="text-sm text-gray-400">Literacy Rate</p>
+            <p className="text-sm text-gray-500">Literacy Rate</p>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6 text-center"
+            className="bg-white border border-gray-200 rounded-xl p-6 text-center shadow-sm"
           >
-            <TrendingUp className="h-8 w-8 text-amber mx-auto mb-3" />
-            <div className="text-2xl font-mono font-bold text-white mb-1">
+            <TrendingUp className="h-8 w-8 text-orange-500 mx-auto mb-3" />
+            <div className="text-2xl font-mono font-bold text-gray-900 mb-1">
               {state.gdp_billion_usd ? '$' + state.gdp_billion_usd.toFixed(1) + 'B' : 'N/A'}
             </div>
-            <p className="text-sm text-gray-400">GDP</p>
+            <p className="text-sm text-gray-500">GDP</p>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6 text-center"
+            className="bg-white border border-gray-200 rounded-xl p-6 text-center shadow-sm"
           >
-            <Leaf className="h-8 w-8 text-alert-red mx-auto mb-3" />
-            <div className="text-2xl font-mono font-bold text-white mb-1">
+            <Leaf className="h-8 w-8 text-red-600 mx-auto mb-3" />
+            <div className="text-2xl font-mono font-bold text-gray-900 mb-1">
               {state.aqi_avg || 'N/A'}
             </div>
-            <p className="text-sm text-gray-400">Average AQI</p>
+            <p className="text-sm text-gray-500">Average AQI</p>
           </motion.div>
         </div>
 
@@ -139,49 +139,50 @@ const StateDetail: React.FC = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 }}
-            className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6"
+            className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm"
           >
-            <h2 className="text-lg font-bold text-white mb-4 flex items-center">
-              <TrendingUp className="h-5 w-5 text-electric-blue mr-2" />
+            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
+              <TrendingUp className="h-5 w-5 text-primary mr-2" />
               Economic Trends
             </h2>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={economicTrends}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#00D4FF20" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
                   <XAxis 
                     dataKey="month" 
                     axisLine={false}
                     tickLine={false}
-                    tick={{ fontSize: 12, fill: '#9CA3AF' }}
+                    tick={{ fontSize: 12, fill: '#6B7280' }}
                   />
                   <YAxis 
                     axisLine={false}
                     tickLine={false}
-                    tick={{ fontSize: 12, fill: '#9CA3AF' }}
+                    tick={{ fontSize: 12, fill: '#6B7280' }}
                   />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: '#0A0E1A',
-                      border: '1px solid #00D4FF',
-                      borderRadius: '6px',
-                      fontSize: '12px'
+                      backgroundColor: '#FFFFFF',
+                      border: '1px solid #D1D5DB',
+                      borderRadius: '8px',
+                      fontSize: '12px',
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
                     }}
                   />
                   <Line 
                     type="monotone" 
                     dataKey="gdp" 
-                    stroke="#00D4FF" 
+                    stroke="#1E40AF" 
                     strokeWidth={2}
-                    dot={{ fill: '#00D4FF', strokeWidth: 2 }}
+                    dot={{ fill: '#1E40AF', strokeWidth: 2 }}
                     name="GDP Growth (%)"
                   />
                   <Line 
                     type="monotone" 
                     dataKey="employment" 
-                    stroke="#00FF88" 
+                    stroke="#16A34A" 
                     strokeWidth={2}
-                    dot={{ fill: '#00FF88', strokeWidth: 2 }}
+                    dot={{ fill: '#16A34A', strokeWidth: 2 }}
                     name="Employment Rate (%)"
                   />
                 </LineChart>
@@ -194,39 +195,40 @@ const StateDetail: React.FC = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6 }}
-            className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6"
+            className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm"
           >
-            <h2 className="text-lg font-bold text-white mb-4 flex items-center">
-              <Leaf className="h-5 w-5 text-neon-green mr-2" />
+            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
+              <Leaf className="h-5 w-5 text-green-600 mr-2" />
               Air Quality Trends
             </h2>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={aqiTrends}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#00D4FF20" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
                   <XAxis 
                     dataKey="month" 
                     axisLine={false}
                     tickLine={false}
-                    tick={{ fontSize: 12, fill: '#9CA3AF' }}
+                    tick={{ fontSize: 12, fill: '#6B7280' }}
                   />
                   <YAxis 
                     axisLine={false}
                     tickLine={false}
-                    tick={{ fontSize: 12, fill: '#9CA3AF' }}
+                    tick={{ fontSize: 12, fill: '#6B7280' }}
                   />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: '#0A0E1A',
-                      border: '1px solid #00D4FF',
-                      borderRadius: '6px',
-                      fontSize: '12px'
+                      backgroundColor: '#FFFFFF',
+                      border: '1px solid #D1D5DB',
+                      borderRadius: '8px',
+                      fontSize: '12px',
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
                     }}
                   />
                   <Bar 
                     dataKey="aqi" 
-                    fill="#FFB800"
-                    radius={[2, 2, 0, 0]}
+                    fill="#F59E0B"
+                    radius={[4, 4, 0, 0]}
                     name="AQI"
                   />
                 </BarChart>
@@ -240,10 +242,10 @@ const StateDetail: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6"
+          className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm"
         >
-          <h2 className="text-lg font-bold text-white mb-4 flex items-center">
-            <AlertTriangle className="h-5 w-5 text-alert-red mr-2" />
+          <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
+            <AlertTriangle className="h-5 w-5 text-red-600 mr-2" />
             Recent Alerts ({stateAlerts.length})
           </h2>
           {stateAlerts.length > 0 ? (
@@ -253,28 +255,28 @@ const StateDetail: React.FC = () => {
                   key={alert.id}
                   className={`p-4 rounded-lg border ${
                     alert.severity === 'critical'
-                      ? 'border-alert-red/50 bg-alert-red/5'
+                      ? 'border-red-200 bg-red-50'
                       : alert.severity === 'warning'
-                      ? 'border-amber/50 bg-amber/5'
-                      : 'border-electric-blue/50 bg-electric-blue/5'
+                      ? 'border-orange-200 bg-orange-50'
+                      : 'border-blue-200 bg-blue-50'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-semibold text-white text-sm">{alert.title}</h3>
+                    <h3 className="font-semibold text-gray-900 text-sm">{alert.title}</h3>
                     <span
                       className={`px-2 py-1 rounded text-xs font-medium ${
                         alert.severity === 'critical'
-                          ? 'bg-alert-red text-white'
+                          ? 'bg-red-600 text-white'
                           : alert.severity === 'warning'
-                          ? 'bg-amber text-deep-navy'
-                          : 'bg-electric-blue text-deep-navy'
+                          ? 'bg-orange-600 text-white'
+                          : 'bg-blue-600 text-white'
                       }`}
                     >
                       {alert.severity?.toUpperCase()}
                     </span>
                   </div>
-                  <p className="text-gray-300 text-sm mb-2">{alert.description}</p>
-                  <div className="text-xs text-gray-400">
+                  <p className="text-gray-600 text-sm mb-2">{alert.description}</p>
+                  <div className="text-xs text-gray-500">
                     <span>Source: {alert.source || 'Unknown'}</span>
                   </div>
                 </div>
@@ -282,7 +284,7 @@ const StateDetail: React.FC = () => {
             </div>
           ) : (
             <div className="text-center py-8">
-              <p className="text-gray-400">No recent alerts for this state</p>
+              <p className="text-gray-500">No recent alerts for this state</p>
             </div>
           )}
         </motion.div>
@@ -294,16 +296,16 @@ const StateDetail: React.FC = () => {
           transition={{ delay: 0.8 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          <div className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6">
-            <h3 className="font-semibold text-white mb-3">Geography</h3>
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <h3 className="font-semibold text-gray-900 mb-3">Geography</h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-gray-400">Area:</span>
-                <span className="text-white">{state.area_sq_km?.toLocaleString()} km²</span>
+                <span className="text-gray-500">Area:</span>
+                <span className="text-gray-900">{state.area_sq_km?.toLocaleString()} km²</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">Density:</span>
-                <span className="text-white">
+                <span className="text-gray-500">Density:</span>
+                <span className="text-gray-900">
                   {state.population && state.area_sq_km 
                     ? Math.round(state.population / state.area_sq_km).toLocaleString() + '/km²'
                     : 'N/A'
@@ -311,22 +313,22 @@ const StateDetail: React.FC = () => {
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">Region:</span>
-                <span className="text-white">{state.region || 'N/A'}</span>
+                <span className="text-gray-500">Region:</span>
+                <span className="text-gray-900">{state.region || 'N/A'}</span>
               </div>
             </div>
           </div>
 
-          <div className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6">
-            <h3 className="font-semibold text-white mb-3">Development</h3>
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <h3 className="font-semibold text-gray-900 mb-3">Development</h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-gray-400">HDI:</span>
-                <span className="text-white">{state.hdi?.toFixed(3) || 'N/A'}</span>
+                <span className="text-gray-500">HDI:</span>
+                <span className="text-gray-900">{state.hdi?.toFixed(3) || 'N/A'}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">Per Capita GDP:</span>
-                <span className="text-white">
+                <span className="text-gray-500">Per Capita GDP:</span>
+                <span className="text-gray-900">
                   {state.gdp_billion_usd && state.population
                     ? '$' + Math.round((state.gdp_billion_usd * 1000000000) / state.population).toLocaleString()
                     : 'N/A'
@@ -334,8 +336,8 @@ const StateDetail: React.FC = () => {
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">Literacy Rank:</span>
-                <span className="text-white">
+                <span className="text-gray-500">Literacy Rank:</span>
+                <span className="text-gray-900">
                   {state.literacy_rate && state.literacy_rate > 90 ? 'High' : 
                    state.literacy_rate && state.literacy_rate > 75 ? 'Medium' : 'Low'}
                 </span>
@@ -343,9 +345,9 @@ const StateDetail: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-6">
-            <h3 className="font-semibold text-white mb-3">Key Sectors</h3>
-            <div className="space-y-2 text-sm text-gray-300">
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <h3 className="font-semibold text-gray-900 mb-3">Key Sectors</h3>
+            <div className="space-y-2 text-sm text-gray-600">
               <div>• Agriculture & Allied</div>
               <div>• Manufacturing</div>
               <div>• Services & IT</div>
