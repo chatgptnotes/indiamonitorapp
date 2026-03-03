@@ -1,40 +1,110 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1E40AF;
-  --color-primary-light: #3B82F6;
-  --color-primary-dark: #1E3A8A;
-  --color-secondary: #64748B;
-  --color-success: #10B981;
-  --color-warning: #F59E0B;
-  --color-danger: #EF4444;
-  --color-deep-navy: #FFFFFF;
-  --color-electric-blue: #1E40AF;
-  --color-neon-green: #10B981;
-  --color-alert-red: #EF4444;
-  --color-amber: #F59E0B;
-  --font-mono: 'Fira Code', monospace;
-  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadow-card-hover: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-card-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --color-primary: #00F0FF;
+  --color-primary-light: #67F7FF;
+  --color-primary-dark: #00B8C4;
+  --color-secondary: #A855F7;
+  --color-success: #00FF88;
+  --color-warning: #FFB800;
+  --color-danger: #FF3366;
+  --color-cyber-bg: #0A0E1A;
+  --color-cyber-surface: #111827;
+  --color-cyber-card: #1A1F2E;
+  --color-cyber-border: #2A2F3E;
+  --color-neon-cyan: #00F0FF;
+  --color-neon-magenta: #FF00FF;
+  --color-neon-green: #00FF88;
+  --color-neon-amber: #FFB800;
+  --font-mono: 'Fira Code', 'JetBrains Mono', monospace;
+  --shadow-card: 0 0 15px rgba(0, 240, 255, 0.05);
+  --shadow-card-hover: 0 0 25px rgba(0, 240, 255, 0.15);
+  --shadow-card-lg: 0 0 40px rgba(0, 240, 255, 0.1);
+  --shadow-neon-cyan: 0 0 20px rgba(0, 240, 255, 0.3);
+  --shadow-neon-magenta: 0 0 20px rgba(255, 0, 255, 0.3);
+  --shadow-neon-green: 0 0 20px rgba(0, 255, 136, 0.3);
 }
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes counter-glow {
+  0%, 100% { text-shadow: 0 0 10px currentColor; }
+  50% { text-shadow: 0 0 20px currentColor, 0 0 40px currentColor; }
+}
+
+@keyframes border-glow {
+  0%, 100% { border-color: rgba(0, 240, 255, 0.2); }
+  50% { border-color: rgba(0, 240, 255, 0.5); }
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.15; background-position: -200% 0; }
+  50% { opacity: 0.3; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes spin-refresh {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-glow-pulse { animation: glow-pulse 2s ease-in-out infinite; }
+.animate-marquee { animation: marquee 30s linear infinite; }
+.animate-marquee:hover { animation-play-state: paused; }
+.animate-counter-glow { animation: counter-glow 2s ease-in-out infinite; }
+.animate-border-glow { animation: border-glow 3s ease-in-out infinite; }
+.animate-skeleton-pulse {
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, rgba(0,240,255,0.08), transparent);
+  background-size: 200% 100%;
+}
+.animate-spin-refresh { animation: spin-refresh 1s linear infinite; }
+
+.cyber-card {
+  background: linear-gradient(135deg, #1A1F2E 0%, #111827 100%);
+  border: 1px solid #2A2F3E;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.cyber-card:hover {
+  border-color: rgba(0, 240, 255, 0.3);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.1), inset 0 0 25px rgba(0, 240, 255, 0.02);
+  transform: translateY(-2px);
+}
+
+.glow-border {
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.05), inset 0 0 15px rgba(0, 240, 255, 0.02);
+}
+
+.neon-text { text-shadow: 0 0 10px currentColor, 0 0 20px currentColor; }
+
+.glass-bg {
+  background: rgba(17, 24, 39, 0.8);
+  backdrop-filter: blur(12px);
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0A0E1A; }
+::-webkit-scrollbar-thumb { background: #2A2F3E; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #00F0FF; }
 
 body {
   margin: 0;
-  background-color: #F8FAFC;
-  color: #1E293B;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background-color: #0A0E1A;
+  color: #E2E8F0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-#root {
-  min-height: 100vh;
-  background-color: #F8FAFC;
-}
+* { box-sizing: border-box; }
+#root { min-height: 100vh; background-color: #0A0E1A; }

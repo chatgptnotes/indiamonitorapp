@@ -19,7 +19,7 @@ const stateData: Record<string, Record<string, number>> = {
   'Andhra Pradesh': { GDP: 68, Literacy: 67, Healthcare: 65, AQI: 70, Infrastructure: 68, Employment: 62 },
 }
 
-const COLORS = ['#1E40AF', '#10B981', '#F59E0B']
+const COLORS = ['#00F0FF', '#00FF88', '#FFB800']
 
 const StateComparison: React.FC = () => {
   const [selected, setSelected] = useState<string[]>(['Maharashtra', 'Karnataka', 'Tamil Nadu'])
@@ -37,17 +37,17 @@ const StateComparison: React.FC = () => {
     <DashboardLayout>
       <div className="space-y-6">
         <div className="flex items-center space-x-3">
-          <GitCompare className="h-6 w-6 text-primary" />
-          <h2 className="text-2xl font-bold text-gray-900">State Comparison</h2>
+          <GitCompare className="h-6 w-6 text-neon-cyan" />
+          <h2 className="text-2xl font-bold text-white">State Comparison</h2>
           <span className="text-sm text-gray-500">Select up to 3 states</span>
         </div>
         <div className="flex flex-wrap gap-2">
           {states.map(s => (
-            <button key={s} onClick={() => toggle(s)} className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${selected.includes(s) ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>{s}</button>
+            <button key={s} onClick={() => toggle(s)} className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${selected.includes(s) ? 'bg-neon-cyan text-white' : 'bg-cyber-border/30 text-gray-300 hover:bg-gray-200'}`}>{s}</button>
           ))}
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white rounded-xl border border-gray-200 p-6 shadow-card">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-cyber-card rounded-xl border border-cyber-border p-6 shadow-card">
             <h3 className="text-lg font-semibold mb-4">Metrics Comparison</h3>
             <ResponsiveContainer width="100%" height={350}>
               <BarChart data={barData}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="metric" tick={{ fontSize: 12 }} /><YAxis /><Tooltip />
@@ -55,7 +55,7 @@ const StateComparison: React.FC = () => {
               </BarChart>
             </ResponsiveContainer>
           </motion.div>
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="bg-white rounded-xl border border-gray-200 p-6 shadow-card">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="bg-cyber-card rounded-xl border border-cyber-border p-6 shadow-card">
             <h3 className="text-lg font-semibold mb-4">Radar Overview</h3>
             <ResponsiveContainer width="100%" height={350}>
               <RadarChart data={radarData}><PolarGrid /><PolarAngleAxis dataKey="metric" tick={{ fontSize: 11 }} /><PolarRadiusAxis angle={30} domain={[0, 100]} />
@@ -67,14 +67,14 @@ const StateComparison: React.FC = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {selected.map((s, i) => (
-            <div key={s} className="bg-white rounded-xl border-2 p-4 shadow-card" style={{ borderColor: COLORS[i] }}>
+            <div key={s} className="bg-cyber-card rounded-xl border-2 p-4 shadow-card" style={{ borderColor: COLORS[i] }}>
               <h4 className="font-semibold text-lg mb-3" style={{ color: COLORS[i] }}>{s}</h4>
               {metrics.map(m => (
-                <div key={m} className="flex justify-between items-center py-1.5 border-b border-gray-100 last:border-0">
-                  <span className="text-sm text-gray-600">{m}</span>
+                <div key={m} className="flex justify-between items-center py-1.5 border-b border-cyber-border last:border-0">
+                  <span className="text-sm text-gray-400">{m}</span>
                   <div className="flex items-center space-x-2">
-                    <div className="w-24 h-2 bg-gray-100 rounded-full"><div className="h-full rounded-full" style={{ width: `${stateData[s][m]}%`, backgroundColor: COLORS[i] }} /></div>
-                    <span className="text-sm font-semibold text-gray-900 w-8 text-right">{stateData[s][m]}</span>
+                    <div className="w-24 h-2 bg-cyber-border/30 rounded-full"><div className="h-full rounded-full" style={{ width: `${stateData[s][m]}%`, backgroundColor: COLORS[i] }} /></div>
+                    <span className="text-sm font-semibold text-white w-8 text-right">{stateData[s][m]}</span>
                   </div>
                 </div>
               ))}

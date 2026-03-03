@@ -78,13 +78,13 @@ const Settings: React.FC = () => {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Settings</h1>
-            <p className="text-gray-600">Manage your preferences and account settings</p>
+            <h1 className="text-3xl font-bold text-white">Settings</h1>
+            <p className="text-gray-400">Manage your preferences and account settings</p>
           </div>
           
           <button
             onClick={handleSave}
-            className="flex items-center space-x-2 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors shadow-sm"
+            className="flex items-center space-x-2 px-6 py-2 bg-neon-cyan text-white rounded-lg hover:bg-neon-cyan-dark transition-colors "
           >
             {saved ? <Check className="h-4 w-4" /> : <Save className="h-4 w-4" />}
             <span>{saved ? 'Saved' : 'Save Changes'}</span>
@@ -94,7 +94,7 @@ const Settings: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Sidebar Navigation */}
           <div className="lg:col-span-1">
-            <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+            <div className="bg-cyber-card border border-cyber-border rounded-xl p-4 ">
               <nav className="space-y-2">
                 {tabs.map(({ key, label, icon: Icon }) => (
                   <button
@@ -102,8 +102,8 @@ const Settings: React.FC = () => {
                     onClick={() => setActiveTab(key as any)}
                     className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors ${
                       activeTab === key
-                        ? 'bg-primary text-white'
-                        : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                        ? 'bg-neon-cyan text-white'
+                        : 'text-gray-300 hover:text-white hover:bg-cyber-border/30'
                     }`}
                   >
                     <Icon className="h-4 w-4" />
@@ -121,27 +121,27 @@ const Settings: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-              className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm"
+              className="bg-cyber-card border border-cyber-border rounded-xl p-6 "
             >
               {activeTab === 'profile' && (
                 <div className="space-y-6">
-                  <h2 className="text-xl font-bold text-gray-900 flex items-center">
-                    <User className="h-5 w-5 text-primary mr-2" />
+                  <h2 className="text-xl font-bold text-white flex items-center">
+                    <User className="h-5 w-5 text-neon-cyan mr-2" />
                     Profile Information
                   </h2>
 
                   {/* Avatar Section */}
                   <div className="flex items-center space-x-6">
                     <div className="relative">
-                      <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center">
-                        <User className="h-10 w-10 text-gray-600" />
+                      <div className="w-20 h-20 bg-cyber-border/30 rounded-full flex items-center justify-center">
+                        <User className="h-10 w-10 text-gray-400" />
                       </div>
-                      <button className="absolute -bottom-1 -right-1 w-6 h-6 bg-primary rounded-full flex items-center justify-center hover:bg-primary-dark transition-colors">
+                      <button className="absolute -bottom-1 -right-1 w-6 h-6 bg-neon-cyan rounded-full flex items-center justify-center hover:bg-neon-cyan-dark transition-colors">
                         <Camera className="h-3 w-3 text-white" />
                       </button>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900">{profile.fullName || 'User'}</h3>
+                      <h3 className="text-lg font-semibold text-white">{profile.fullName || 'User'}</h3>
                       <p className="text-gray-500 text-sm">{profile.role}</p>
                     </div>
                   </div>
@@ -149,50 +149,50 @@ const Settings: React.FC = () => {
                   {/* Form Fields */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
                       <input
                         type="text"
                         value={profile.fullName}
                         onChange={(e) => setProfile(prev => ({ ...prev, fullName: e.target.value }))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                         placeholder="Enter your full name"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
                       <div className="relative">
                         <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                         <input
                           type="email"
                           value={profile.email}
                           onChange={(e) => setProfile(prev => ({ ...prev, email: e.target.value }))}
-                          className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                          className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                           placeholder="your.email@example.com"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
                       <div className="relative">
                         <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                         <input
                           type="tel"
                           value={profile.phone}
                           onChange={(e) => setProfile(prev => ({ ...prev, phone: e.target.value }))}
-                          className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                          className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                           placeholder="+91 XXXXX XXXXX"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Role</label>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">Role</label>
                       <select
                         value={profile.role}
                         onChange={(e) => setProfile(prev => ({ ...prev, role: e.target.value }))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-white focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                       >
                         <option>Analyst</option>
                         <option>Administrator</option>
@@ -203,12 +203,12 @@ const Settings: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Bio</label>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Bio</label>
                     <textarea
                       value={profile.bio}
                       onChange={(e) => setProfile(prev => ({ ...prev, bio: e.target.value }))}
                       rows={4}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 resize-none"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 resize-none"
                       placeholder="Tell us about yourself..."
                     />
                   </div>
@@ -217,8 +217,8 @@ const Settings: React.FC = () => {
 
               {activeTab === 'notifications' && (
                 <div className="space-y-6">
-                  <h2 className="text-xl font-bold text-gray-900 flex items-center">
-                    <Bell className="h-5 w-5 text-primary mr-2" />
+                  <h2 className="text-xl font-bold text-white flex items-center">
+                    <Bell className="h-5 w-5 text-neon-cyan mr-2" />
                     Notification Preferences
                   </h2>
 
@@ -230,9 +230,9 @@ const Settings: React.FC = () => {
                       { key: 'weeklyReport', label: 'Weekly Reports', description: 'Weekly summary of key metrics and insights' },
                       { key: 'criticalOnly', label: 'Critical Only', description: 'Only receive notifications for critical events' }
                     ].map(({ key, label, description }) => (
-                      <div key={key} className="flex items-center justify-between p-4 bg-gray-50 border border-gray-200 rounded-lg">
+                      <div key={key} className="flex items-center justify-between p-4 bg-cyber-bg border border-cyber-border rounded-lg">
                         <div>
-                          <h3 className="font-medium text-gray-900">{label}</h3>
+                          <h3 className="font-medium text-white">{label}</h3>
                           <p className="text-sm text-gray-500">{description}</p>
                         </div>
                         <button
@@ -242,12 +242,12 @@ const Settings: React.FC = () => {
                           }))}
                           className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
                             notifications[key as keyof typeof notifications] 
-                              ? 'bg-primary' 
+                              ? 'bg-neon-cyan' 
                               : 'bg-gray-400'
                           }`}
                         >
                           <span
-                            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                            className={`inline-block h-4 w-4 transform rounded-full bg-cyber-card transition-transform ${
                               notifications[key as keyof typeof notifications] 
                                 ? 'translate-x-6' 
                                 : 'translate-x-1'
@@ -262,18 +262,18 @@ const Settings: React.FC = () => {
 
               {activeTab === 'appearance' && (
                 <div className="space-y-6">
-                  <h2 className="text-xl font-bold text-gray-900 flex items-center">
-                    <Palette className="h-5 w-5 text-primary mr-2" />
+                  <h2 className="text-xl font-bold text-white flex items-center">
+                    <Palette className="h-5 w-5 text-neon-cyan mr-2" />
                     Appearance & Language
                   </h2>
 
                   <div className="space-y-6">
                     {/* Theme */}
                     <div>
-                      <h3 className="font-medium text-gray-900 mb-3">Theme</h3>
+                      <h3 className="font-medium text-white mb-3">Theme</h3>
                       <div className="grid grid-cols-3 gap-4">
                         {[
-                          { key: 'light', label: 'Light', preview: 'bg-white border-2 border-gray-200' },
+                          { key: 'light', label: 'Light', preview: 'bg-cyber-card border-2 border-cyber-border' },
                           { key: 'dark', label: 'Dark', preview: 'bg-gray-800' },
                           { key: 'auto', label: 'Auto', preview: 'bg-gradient-to-r from-white to-gray-800' }
                         ].map(({ key, label, preview }) => (
@@ -282,12 +282,12 @@ const Settings: React.FC = () => {
                             onClick={() => setAppearance(prev => ({ ...prev, theme: key }))}
                             className={`p-4 rounded-lg border-2 transition-colors ${
                               appearance.theme === key
-                                ? 'border-primary bg-primary/5'
-                                : 'border-gray-200 hover:border-gray-300'
+                                ? 'border-primary bg-neon-cyan/5'
+                                : 'border-cyber-border hover:border-gray-300'
                             }`}
                           >
                             <div className={`w-full h-8 ${preview} rounded mb-2`}></div>
-                            <span className="text-gray-700 text-sm">{label}</span>
+                            <span className="text-gray-300 text-sm">{label}</span>
                           </button>
                         ))}
                       </div>
@@ -295,11 +295,11 @@ const Settings: React.FC = () => {
 
                     {/* Language */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Language</label>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">Language</label>
                       <select
                         value={appearance.language}
                         onChange={(e) => setAppearance(prev => ({ ...prev, language: e.target.value }))}
-                        className="w-full max-w-xs px-3 py-2 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                        className="w-full max-w-xs px-3 py-2 border border-gray-300 rounded-lg text-white focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                       >
                         <option value="en">English</option>
                         <option value="hi">हिंदी (Hindi)</option>
@@ -308,11 +308,11 @@ const Settings: React.FC = () => {
 
                     {/* Density */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Display Density</label>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">Display Density</label>
                       <select
                         value={appearance.density}
                         onChange={(e) => setAppearance(prev => ({ ...prev, density: e.target.value }))}
-                        className="w-full max-w-xs px-3 py-2 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                        className="w-full max-w-xs px-3 py-2 border border-gray-300 rounded-lg text-white focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                       >
                         <option value="compact">Compact</option>
                         <option value="comfortable">Comfortable</option>
@@ -321,19 +321,19 @@ const Settings: React.FC = () => {
                     </div>
 
                     {/* Animations */}
-                    <div className="flex items-center justify-between p-4 bg-gray-50 border border-gray-200 rounded-lg">
+                    <div className="flex items-center justify-between p-4 bg-cyber-bg border border-cyber-border rounded-lg">
                       <div>
-                        <h3 className="font-medium text-gray-900">Animations</h3>
+                        <h3 className="font-medium text-white">Animations</h3>
                         <p className="text-sm text-gray-500">Enable smooth animations and transitions</p>
                       </div>
                       <button
                         onClick={() => setAppearance(prev => ({ ...prev, animations: !prev.animations }))}
                         className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                          appearance.animations ? 'bg-primary' : 'bg-gray-400'
+                          appearance.animations ? 'bg-neon-cyan' : 'bg-gray-400'
                         }`}
                       >
                         <span
-                          className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                          className={`inline-block h-4 w-4 transform rounded-full bg-cyber-card transition-transform ${
                             appearance.animations ? 'translate-x-6' : 'translate-x-1'
                           }`}
                         />
@@ -345,8 +345,8 @@ const Settings: React.FC = () => {
 
               {activeTab === 'privacy' && (
                 <div className="space-y-6">
-                  <h2 className="text-xl font-bold text-gray-900 flex items-center">
-                    <Shield className="h-5 w-5 text-primary mr-2" />
+                  <h2 className="text-xl font-bold text-white flex items-center">
+                    <Shield className="h-5 w-5 text-neon-cyan mr-2" />
                     Privacy & Security
                   </h2>
 
@@ -357,9 +357,9 @@ const Settings: React.FC = () => {
                       { key: 'dataSharing', label: 'Data Sharing', description: 'Share anonymized data for research purposes' },
                       { key: 'twoFactor', label: 'Two-Factor Authentication', description: 'Add an extra layer of security to your account' }
                     ].map(({ key, label, description }) => (
-                      <div key={key} className="flex items-center justify-between p-4 bg-gray-50 border border-gray-200 rounded-lg">
+                      <div key={key} className="flex items-center justify-between p-4 bg-cyber-bg border border-cyber-border rounded-lg">
                         <div>
-                          <h3 className="font-medium text-gray-900">{label}</h3>
+                          <h3 className="font-medium text-white">{label}</h3>
                           <p className="text-sm text-gray-500">{description}</p>
                         </div>
                         <button
@@ -369,12 +369,12 @@ const Settings: React.FC = () => {
                           }))}
                           className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
                             privacy[key as keyof typeof privacy] 
-                              ? 'bg-primary' 
+                              ? 'bg-neon-cyan' 
                               : 'bg-gray-400'
                           }`}
                         >
                           <span
-                            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                            className={`inline-block h-4 w-4 transform rounded-full bg-cyber-card transition-transform ${
                               privacy[key as keyof typeof privacy] 
                                 ? 'translate-x-6' 
                                 : 'translate-x-1'
@@ -397,24 +397,24 @@ const Settings: React.FC = () => {
 
               {activeTab === 'data' && (
                 <div className="space-y-6">
-                  <h2 className="text-xl font-bold text-gray-900 flex items-center">
-                    <Download className="h-5 w-5 text-primary mr-2" />
+                  <h2 className="text-xl font-bold text-white flex items-center">
+                    <Download className="h-5 w-5 text-neon-cyan mr-2" />
                     Data & Export
                   </h2>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="p-6 bg-gray-50 border border-gray-200 rounded-lg text-center">
-                      <Download className="h-8 w-8 text-primary mx-auto mb-3" />
-                      <h3 className="font-medium text-gray-900 mb-2">Export Data</h3>
+                    <div className="p-6 bg-cyber-bg border border-cyber-border rounded-lg text-center">
+                      <Download className="h-8 w-8 text-neon-cyan mx-auto mb-3" />
+                      <h3 className="font-medium text-white mb-2">Export Data</h3>
                       <p className="text-sm text-gray-500 mb-4">Download all your data in JSON format</p>
-                      <button className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors">
+                      <button className="px-4 py-2 bg-neon-cyan text-white rounded-lg hover:bg-neon-cyan-dark transition-colors">
                         Download Data
                       </button>
                     </div>
 
-                    <div className="p-6 bg-gray-50 border border-gray-200 rounded-lg text-center">
+                    <div className="p-6 bg-cyber-bg border border-cyber-border rounded-lg text-center">
                       <Globe className="h-8 w-8 text-green-600 mx-auto mb-3" />
-                      <h3 className="font-medium text-gray-900 mb-2">Data Usage</h3>
+                      <h3 className="font-medium text-white mb-2">Data Usage</h3>
                       <p className="text-sm text-gray-500 mb-4">View how your data is being used</p>
                       <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
                         View Usage
@@ -423,17 +423,17 @@ const Settings: React.FC = () => {
                   </div>
 
                   <div className="space-y-4">
-                    <h3 className="font-medium text-gray-900">Data Retention</h3>
+                    <h3 className="font-medium text-white">Data Retention</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <div className="text-center p-4 bg-gray-50 border border-gray-200 rounded-lg">
-                        <div className="text-2xl font-mono font-bold text-primary mb-1">30 days</div>
+                      <div className="text-center p-4 bg-cyber-bg border border-cyber-border rounded-lg">
+                        <div className="text-2xl font-mono font-bold text-neon-cyan mb-1">30 days</div>
                         <p className="text-sm text-gray-500">Activity Logs</p>
                       </div>
-                      <div className="text-center p-4 bg-gray-50 border border-gray-200 rounded-lg">
+                      <div className="text-center p-4 bg-cyber-bg border border-cyber-border rounded-lg">
                         <div className="text-2xl font-mono font-bold text-green-600 mb-1">1 year</div>
                         <p className="text-sm text-gray-500">Analytics Data</p>
                       </div>
-                      <div className="text-center p-4 bg-gray-50 border border-gray-200 rounded-lg">
+                      <div className="text-center p-4 bg-cyber-bg border border-cyber-border rounded-lg">
                         <div className="text-2xl font-mono font-bold text-orange-500 mb-1">Forever</div>
                         <p className="text-sm text-gray-500">Account Data</p>
                       </div>

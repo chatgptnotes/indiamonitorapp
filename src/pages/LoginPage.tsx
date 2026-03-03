@@ -52,23 +52,23 @@ const LoginPage: React.FC = () => {
 
   if (magicLinkSent) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-cyber-bg flex items-center justify-center px-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="max-w-md w-full bg-white border border-gray-200 rounded-lg shadow-card-lg p-8 text-center"
+          className="max-w-md w-full bg-cyber-card border border-cyber-border rounded-lg shadow-card-lg p-8 text-center"
         >
-          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Mail className="h-8 w-8 text-primary" />
+          <div className="w-16 h-16 bg-neon-cyan/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Mail className="h-8 w-8 text-neon-cyan" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Check Your Email</h2>
-          <p className="text-gray-600 mb-6">
-            We've sent a magic link to <strong className="text-gray-900">{email}</strong>. 
+          <h2 className="text-2xl font-bold text-white mb-2">Check Your Email</h2>
+          <p className="text-gray-400 mb-6">
+            We've sent a magic link to <strong className="text-white">{email}</strong>. 
             Click the link to sign in to your account.
           </p>
           <button
             onClick={() => setMagicLinkSent(false)}
-            className="text-primary hover:text-primary-dark transition-colors font-medium"
+            className="text-neon-cyan hover:text-neon-cyan-dark transition-colors font-medium"
           >
             Back to login
           </button>
@@ -78,20 +78,20 @@ const LoginPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-cyber-bg flex items-center justify-center px-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="max-w-md w-full bg-white border border-gray-200 rounded-lg shadow-card-lg p-8"
+        className="max-w-md w-full bg-cyber-card border border-cyber-border rounded-lg shadow-card-lg p-8"
       >
         {/* Header */}
         <div className="text-center mb-8">
           <Link to="/" className="flex items-center justify-center space-x-2 mb-6 hover:opacity-80 transition-opacity">
-            <Activity className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold text-gray-900">IndiaMonitor</span>
+            <Activity className="h-8 w-8 text-neon-cyan" />
+            <span className="text-2xl font-bold text-white">IndiaMonitor</span>
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h1>
-          <p className="text-gray-600">Sign in to access your dashboard</p>
+          <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
+          <p className="text-gray-400">Sign in to access your dashboard</p>
         </div>
 
         {/* Form */}
@@ -107,14 +107,14 @@ const LoginPage: React.FC = () => {
                 <span className="text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded-full">Click to fill</span>
               </div>
               <div className="space-y-1">
-                <div className="text-sm text-gray-600"><span className="text-gray-400 w-16 inline-block">Email:</span> cmd@hopehospitaal.com</div>
-                <div className="text-sm text-gray-600"><span className="text-gray-400 w-16 inline-block">Pass:</span> Chindwada@1</div>
+                <div className="text-sm text-gray-400"><span className="text-gray-400 w-16 inline-block">Email:</span> cmd@hopehospitaal.com</div>
+                <div className="text-sm text-gray-400"><span className="text-gray-400 w-16 inline-block">Pass:</span> Chindwada@1</div>
               </div>
             </button>
 
         <form onSubmit={handleEmailLogin} className="space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
               Email Address
             </label>
             <div className="relative">
@@ -124,7 +124,7 @@ const LoginPage: React.FC = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-10 pr-3 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                className="w-full pl-10 pr-3 py-3 bg-cyber-card border border-gray-300 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                 placeholder="Enter your email"
                 required
               />
@@ -132,7 +132,7 @@ const LoginPage: React.FC = () => {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2">
               Password
             </label>
             <div className="relative">
@@ -142,14 +142,14 @@ const LoginPage: React.FC = () => {
                 type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 pr-10 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                className="w-full pl-10 pr-10 py-3 bg-cyber-card border border-gray-300 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                 placeholder="Enter your password"
                 required
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-400 transition-colors"
               >
                 {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
               </button>
@@ -159,7 +159,7 @@ const LoginPage: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 px-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg"
+            className="w-full py-3 px-4 bg-neon-cyan text-white rounded-lg font-semibold hover:bg-neon-cyan-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg"
           >
             {loading ? (
               <span className="flex items-center justify-center">
@@ -178,7 +178,7 @@ const LoginPage: React.FC = () => {
             <div className="w-full border-t border-gray-300"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white text-gray-500">Or continue with</span>
+            <span className="px-2 bg-cyber-card text-gray-500">Or continue with</span>
           </div>
         </div>
 
@@ -186,15 +186,15 @@ const LoginPage: React.FC = () => {
         <button
           onClick={handleMagicLink}
           disabled={loading}
-          className="w-full py-3 px-4 border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-medium"
+          className="w-full py-3 px-4 border-2 border-gray-300 text-gray-300 rounded-lg hover:bg-cyber-bg hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-medium"
         >
           Send Magic Link
         </button>
 
         {/* Sign Up Link */}
-        <p className="mt-6 text-center text-gray-600">
+        <p className="mt-6 text-center text-gray-400">
           Don't have an account?{' '}
-          <Link to="/signup" className="text-primary hover:text-primary-dark font-medium transition-colors">
+          <Link to="/signup" className="text-neon-cyan hover:text-neon-cyan-dark font-medium transition-colors">
             Sign up here
           </Link>
         </p>

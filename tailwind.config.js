@@ -7,38 +7,36 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Professional light theme colors
-        primary: '#1E40AF',        // Main blue
-        'primary-light': '#3B82F6', // Lighter blue
-        'primary-dark': '#1E3A8A',  // Darker blue
-        secondary: '#64748B',       // Gray-blue
-        success: '#10B981',         // Green
-        warning: '#F59E0B',         // Orange
-        danger: '#EF4444',          // Red
-        'gray-50': '#F8FAFC',
-        'gray-100': '#F1F5F9',
-        'gray-200': '#E2E8F0',
-        'gray-300': '#CBD5E1',
-        'gray-400': '#94A3B8',
-        'gray-500': '#64748B',
-        'gray-600': '#475569',
-        'gray-700': '#334155',
-        'gray-800': '#1E293B',
-        'gray-900': '#0F172A',
-        // Legacy colors for backward compatibility (will be replaced)
-        'deep-navy': '#FFFFFF',      // Now white
-        'electric-blue': '#1E40AF',   // Now primary blue
-        'neon-green': '#10B981',      // Now success green
-        'alert-red': '#EF4444',       // Now danger red
-        'amber': '#F59E0B',           // Now warning orange
+        primary: '#00F0FF',
+        'primary-light': '#67F7FF',
+        'primary-dark': '#00B8C4',
+        secondary: '#A855F7',
+        success: '#00FF88',
+        warning: '#FFB800',
+        danger: '#FF3366',
+        'cyber-bg': '#0A0E1A',
+        'cyber-surface': '#111827',
+        'cyber-card': '#1A1F2E',
+        'cyber-border': '#2A2F3E',
+        'neon-cyan': '#00F0FF',
+        'neon-magenta': '#FF00FF',
+        'neon-green': '#00FF88',
+        'neon-amber': '#FFB800',
+        'deep-navy': '#0A0E1A',
+        'electric-blue': '#00F0FF',
+        'alert-red': '#FF3366',
+        'amber': '#FFB800',
       },
       fontFamily: {
-        'mono': ['Fira Code', 'monospace'],
+        'mono': ['Fira Code', 'JetBrains Mono', 'monospace'],
       },
       boxShadow: {
-        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-        'card-hover': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-        'card-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        'card': '0 0 15px rgba(0, 240, 255, 0.05)',
+        'card-hover': '0 0 25px rgba(0, 240, 255, 0.15)',
+        'card-lg': '0 0 40px rgba(0, 240, 255, 0.1)',
+        'neon-cyan': '0 0 20px rgba(0, 240, 255, 0.3)',
+        'neon-magenta': '0 0 20px rgba(255, 0, 255, 0.3)',
+        'neon-green': '0 0 20px rgba(0, 255, 136, 0.3)',
       },
     },
   },

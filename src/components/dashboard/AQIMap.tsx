@@ -30,19 +30,19 @@ const getAQILabel = (aqi: number) => {
 }
 
 const AQIMap: React.FC = () => (
-  <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-card">
+  <div className="bg-cyber-card rounded-xl border border-cyber-border p-4 shadow-card">
     <div className="flex items-center justify-between mb-4">
-      <h3 className="text-lg font-semibold text-gray-900 flex items-center"><Wind className="h-5 w-5 mr-2 text-primary" />Air Quality Index</h3>
+      <h3 className="text-lg font-semibold text-white flex items-center"><Wind className="h-5 w-5 mr-2 text-neon-cyan" />Air Quality Index</h3>
       <div className="flex space-x-1">{['Good','Mod','Poor','Bad','Haz'].map((l,i) => (
         <span key={l} className={`text-[10px] px-1.5 py-0.5 rounded text-white ${['bg-green-500','bg-yellow-500','bg-orange-500','bg-red-500','bg-purple-700'][i]}`}>{l}</span>
       ))}</div>
     </div>
     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
       {cities.map(c => (
-        <motion.div key={c.name} whileHover={{ scale: 1.05 }} className="bg-gray-50 rounded-lg p-3 text-center border border-gray-100">
+        <motion.div key={c.name} whileHover={{ scale: 1.05 }} className="bg-cyber-bg rounded-lg p-3 text-center border border-cyber-border">
           <div className={`inline-block w-3 h-3 rounded-full ${getAQIColor(c.aqi)} mb-1`} />
-          <p className="text-sm font-semibold text-gray-800">{c.name}</p>
-          <p className="text-2xl font-bold text-gray-900">{c.aqi}</p>
+          <p className="text-sm font-semibold text-gray-200">{c.name}</p>
+          <p className="text-2xl font-bold text-white">{c.aqi}</p>
           <p className="text-xs text-gray-500">{getAQILabel(c.aqi)}</p>
         </motion.div>
       ))}

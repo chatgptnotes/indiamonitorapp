@@ -14,7 +14,7 @@ const unicorns = [
 const maxCount = 52
 
 const StartupEcosystem: React.FC = () => (
-  <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-card">
+  <div className="bg-cyber-card rounded-xl border border-cyber-border p-4 shadow-card">
     <h3 className="text-lg font-semibold mb-3 flex items-center"><Rocket className="h-5 w-5 mr-2 text-purple-600" />Startup Ecosystem</h3>
     <div className="grid grid-cols-3 gap-2 mb-4">
       <div className="text-center p-2 bg-purple-50 rounded-lg"><p className="text-xl font-bold text-purple-700">116</p><p className="text-xs text-gray-500">Unicorns</p></div>
@@ -27,9 +27,9 @@ const StartupEcosystem: React.FC = () => (
     <div className="mt-3 space-y-1.5">
       {unicorns.map(u => (
         <div key={u.city} className="flex items-center space-x-2">
-          <span className="text-xs text-gray-600 w-20">{u.city}</span>
-          <div className="flex-1 h-3 bg-gray-100 rounded-full"><div className="h-full bg-purple-500 rounded-full" style={{ width: `${(u.count/maxCount)*100}%` }} /></div>
-          <span className="text-xs font-semibold text-gray-700 w-6">{u.count}</span>
+          <span className="text-xs text-gray-400 w-20">{u.city}</span>
+          <div className="flex-1 h-3 bg-cyber-border/30 rounded-full"><div className="h-full bg-purple-500 rounded-full" style={{ width: `${(u.count/maxCount)*100}%` }} /></div>
+          <span className="text-xs font-semibold text-gray-300 w-6">{u.count}</span>
         </div>
       ))}
     </div>

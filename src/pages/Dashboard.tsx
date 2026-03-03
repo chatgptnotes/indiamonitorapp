@@ -1,4 +1,3 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import DashboardLayout from '../components/layout/DashboardLayout'
 import IndiaMap from '../components/dashboard/IndiaMap'
@@ -17,16 +16,28 @@ import RailwayNetwork from '../components/dashboard/RailwayNetwork'
 import PowerGrid from '../components/dashboard/PowerGrid'
 import DigitalIndia from '../components/dashboard/DigitalIndia'
 import PresentationMode from '../components/dashboard/PresentationMode'
+import Footer from '../components/shared/Footer'
+import CyberSkeleton from '../components/shared/CyberSkeleton'
 import { useData } from '../contexts/DataContext'
 
-const Dashboard: React.FC = () => {
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } }
+const fadeUp = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.4 } } }
+
+const Dashboard = () => {
   const { loading } = useData()
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <motion.div animate={{ rotate: 360 }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }} className="rounded-full h-16 w-16 border-4 border-primary border-t-transparent" />
-      </div>
+      <DashboardLayout>
+        <div className="space-y-4">
+          <CyberSkeleton type="card" lines={2} />
+          <div className="grid grid-cols-12 gap-4">
+            <div className="col-span-12 lg:col-span-3"><CyberSkeleton type="card" lines={4} /></div>
+            <div className="col-span-12 lg:col-span-6"><CyberSkeleton type="chart" /></div>
+            <div className="col-span-12 lg:col-span-3"><CyberSkeleton type="card" lines={4} /></div>
+          </div>
+        </div>
+      </DashboardLayout>
     )
   }
 
@@ -40,54 +51,44 @@ const Dashboard: React.FC = () => {
 
   return (
     <DashboardLayout>
-      <div className="space-y-4">
+      <motion.div variants={stagger} initial="hidden" animate="show" className="space-y-4">
         {/* News Ticker + Presentation Mode */}
-        <div className="flex items-center space-x-4">
+        <motion.div variants={fadeUp} className="flex items-center space-x-4">
           <div className="flex-1"><NewsTicker /></div>
           <PresentationMode>{panels}</PresentationMode>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-12 gap-4">
-          {/* Left - Alerts + Disasters */}
-          <div className="col-span-12 lg:col-span-3 space-y-4">
+          <motion.div variants={fadeUp} className="col-span-12 lg:col-span-3 space-y-4">
             <AlertsPanel />
             <DisasterTracker />
-          </div>
-
-          {/* Center - Map + AQI */}
-          <div className="col-span-12 lg:col-span-6 space-y-4">
+          </motion.div>
+          <motion.div variants={fadeUp} className="col-span-12 lg:col-span-6 space-y-4">
             <IndiaMap />
             <AQIMap />
-          </div>
-
-          {/* Right - Economy + Trade + Startups */}
-          <div className="col-span-12 lg:col-span-3 space-y-4">
+          </motion.div>
+          <motion.div variants={fadeUp} className="col-span-12 lg:col-span-3 space-y-4">
             <EconomyPanel />
             <TradeHeatmap />
             <StartupEcosystem />
-          </div>
-
-          {/* Bottom Row */}
-          <div className="col-span-12 lg:col-span-4 space-y-4">
+          </motion.div>
+          <motion.div variants={fadeUp} className="col-span-12 lg:col-span-4 space-y-4">
             <EnvironmentPanel />
             <WaterResources />
             <ClimateTracker />
-          </div>
-          <div className="col-span-12 lg:col-span-4 space-y-4">
+          </motion.div>
+          <motion.div variants={fadeUp} className="col-span-12 lg:col-span-4 space-y-4">
             <InfrastructurePanel />
             <RailwayNetwork />
-          </div>
-          <div className="col-span-12 lg:col-span-4 space-y-4">
+          </motion.div>
+          <motion.div variants={fadeUp} className="col-span-12 lg:col-span-4 space-y-4">
             <PowerGrid />
             <DigitalIndia />
-          </div>
+          </motion.div>
         </div>
 
-        {/* Footer */}
-        <div className="text-center text-xs text-gray-400 py-2">
-          drmhope.com | A Bettroi Product | v2.0 | 2026-03-03
-        </div>
-      </div>
+        <Footer />
+      </motion.div>
     </DashboardLayout>
   )
 }

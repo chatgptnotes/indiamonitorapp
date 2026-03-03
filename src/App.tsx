@@ -20,13 +20,13 @@ import './index.css'
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, loading } = useAuth()
-  if (loading) return <div className="min-h-screen bg-gray-50 flex items-center justify-center"><div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div></div>
+  if (loading) return <div className="min-h-screen bg-cyber-bg flex items-center justify-center"><div className="animate-spin rounded-full h-32 w-32 border-b-2 border-neon-cyan"></div></div>
   return user ? <>{children}</> : <Navigate to="/login" replace />
 }
 
 const PublicRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, loading } = useAuth()
-  if (loading) return <div className="min-h-screen bg-gray-50 flex items-center justify-center"><div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div></div>
+  if (loading) return <div className="min-h-screen bg-cyber-bg flex items-center justify-center"><div className="animate-spin rounded-full h-32 w-32 border-b-2 border-neon-cyan"></div></div>
   return user ? <Navigate to="/dashboard" replace /> : <>{children}</>
 }
 
@@ -52,7 +52,7 @@ function AppRoutes() {
         <Route path="/crime" element={<DP><CrimeStatistics /></DP>} />
         <Route path="/agriculture" element={<DP><Agriculture /></DP>} />
       </Routes>
-      <Toaster position="top-right" toastOptions={{ style: { background: '#fff', color: '#1E293B', border: '1px solid #E2E8F0' } }} />
+      <Toaster position="top-right" toastOptions={{ style: { background: '#1A1F2E', color: '#E2E8F0', border: '1px solid #2A2F3E' } }} />
     </Router>
   )
 }

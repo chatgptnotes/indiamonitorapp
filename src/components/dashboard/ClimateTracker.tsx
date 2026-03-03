@@ -17,20 +17,20 @@ const extremeEvents = [
 ]
 
 const ClimateTracker: React.FC = () => (
-  <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-card">
+  <div className="bg-cyber-card rounded-xl border border-cyber-border p-4 shadow-card">
     <h3 className="text-base font-semibold mb-3 flex items-center"><Thermometer className="h-5 w-5 mr-2 text-red-500" />Climate Tracker</h3>
     <p className="text-xs text-gray-500 mb-2">Temperature Anomaly (C above baseline)</p>
     <ResponsiveContainer width="100%" height={150}>
       <LineChart data={tempAnomaly}><XAxis dataKey="year" tick={{ fontSize: 9 }} /><YAxis tick={{ fontSize: 9 }} domain={[0, 1.2]} /><Tooltip />
-        <ReferenceLine y={0.5} stroke="#EF4444" strokeDasharray="3 3" label={{ value: 'Alert', fontSize: 9 }} />
-        <Line type="monotone" dataKey="anomaly" stroke="#EF4444" strokeWidth={2} dot={{ r: 3 }} name="Anomaly (C)" />
+        <ReferenceLine y={0.5} stroke="#FF3366" strokeDasharray="3 3" label={{ value: 'Alert', fontSize: 9 }} />
+        <Line type="monotone" dataKey="anomaly" stroke="#FF3366" strokeWidth={2} dot={{ r: 3 }} name="Anomaly (C)" />
       </LineChart>
     </ResponsiveContainer>
     <div className="mt-3 space-y-1.5">
       {extremeEvents.map(e => (
         <div key={e.type} className="flex items-center justify-between text-sm">
-          <span className="text-gray-600">{e.type}</span>
-          <div className="flex items-center space-x-2"><span className="font-semibold text-gray-900">{e.count}</span><span className="text-xs text-red-500">{e.trend}</span></div>
+          <span className="text-gray-400">{e.type}</span>
+          <div className="flex items-center space-x-2"><span className="font-semibold text-white">{e.count}</span><span className="text-xs text-red-500">{e.trend}</span></div>
         </div>
       ))}
     </div>

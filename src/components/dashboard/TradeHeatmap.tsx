@@ -14,13 +14,13 @@ const partners = [
 ]
 
 const TradeHeatmap: React.FC = () => (
-  <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-card">
-    <h3 className="text-lg font-semibold mb-3 flex items-center"><Globe className="h-5 w-5 mr-2 text-primary" />Trade Partners ($B)</h3>
+  <div className="bg-cyber-card rounded-xl border border-cyber-border p-4 shadow-card">
+    <h3 className="text-lg font-semibold mb-3 flex items-center"><Globe className="h-5 w-5 mr-2 text-neon-cyan" />Trade Partners ($B)</h3>
     <div className="space-y-2">
       {partners.map(p => (
-        <motion.div key={p.country} whileHover={{ x: 4 }} className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50">
+        <motion.div key={p.country} whileHover={{ x: 4 }} className="flex items-center space-x-3 p-2 rounded-lg hover:bg-cyber-bg">
           <span className="text-lg">{p.flag}</span>
-          <span className="text-sm font-medium text-gray-900 w-24 truncate">{p.country}</span>
+          <span className="text-sm font-medium text-white w-24 truncate">{p.country}</span>
           <div className="flex-1 flex space-x-1">
             <div className="h-5 bg-green-400 rounded-l" style={{ width: `${(p.exports/120)*100}%` }} title={`Export: $${p.exports}B`} />
             <div className="h-5 bg-red-400 rounded-r" style={{ width: `${(p.imports/120)*100}%` }} title={`Import: $${p.imports}B`} />

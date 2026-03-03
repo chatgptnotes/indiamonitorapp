@@ -4,14 +4,14 @@ import { Leaf, Thermometer, AlertCircle, Cloud } from 'lucide-react'
 import { useData } from '../../contexts/DataContext'
 
 const mockAQIData = [
-  { city: 'Delhi', state: 'DL', aqi: 287, pm25: 178.5, category: 'Poor', color: '#DC2626' },
-  { city: 'Mumbai', state: 'MH', aqi: 154, pm25: 98.2, category: 'Moderate', color: '#F59E0B' },
-  { city: 'Kolkata', state: 'WB', aqi: 198, pm25: 125.7, category: 'Poor', color: '#DC2626' },
-  { city: 'Chennai', state: 'TN', aqi: 89, pm25: 54.3, category: 'Satisfactory', color: '#16A34A' },
-  { city: 'Bengaluru', state: 'KA', aqi: 76, pm25: 45.1, category: 'Satisfactory', color: '#16A34A' },
-  { city: 'Hyderabad', state: 'TS', aqi: 132, pm25: 83.4, category: 'Moderate', color: '#F59E0B' },
-  { city: 'Ahmedabad', state: 'GJ', aqi: 167, pm25: 105.2, category: 'Moderate', color: '#F59E0B' },
-  { city: 'Pune', state: 'MH', aqi: 118, pm25: 72.8, category: 'Moderate', color: '#F59E0B' }
+  { city: 'Delhi', state: 'DL', aqi: 287, pm25: 178.5, category: 'Poor', color: '#FF3366' },
+  { city: 'Mumbai', state: 'MH', aqi: 154, pm25: 98.2, category: 'Moderate', color: '#FFB800' },
+  { city: 'Kolkata', state: 'WB', aqi: 198, pm25: 125.7, category: 'Poor', color: '#FF3366' },
+  { city: 'Chennai', state: 'TN', aqi: 89, pm25: 54.3, category: 'Satisfactory', color: '#00FF88' },
+  { city: 'Bengaluru', state: 'KA', aqi: 76, pm25: 45.1, category: 'Satisfactory', color: '#00FF88' },
+  { city: 'Hyderabad', state: 'TS', aqi: 132, pm25: 83.4, category: 'Moderate', color: '#FFB800' },
+  { city: 'Ahmedabad', state: 'GJ', aqi: 167, pm25: 105.2, category: 'Moderate', color: '#FFB800' },
+  { city: 'Pune', state: 'MH', aqi: 118, pm25: 72.8, category: 'Moderate', color: '#FFB800' }
 ]
 
 const mockWeatherAlerts = [
@@ -25,10 +25,10 @@ const EnvironmentPanel: React.FC = () => {
   const { } = useData()
 
   const getAQICategory = (aqi: number) => {
-    if (aqi <= 50) return { text: 'Good', color: '#16A34A' }
+    if (aqi <= 50) return { text: 'Good', color: '#00FF88' }
     if (aqi <= 100) return { text: 'Satisfactory', color: '#22C55E' }
-    if (aqi <= 200) return { text: 'Moderate', color: '#F59E0B' }
-    if (aqi <= 300) return { text: 'Poor', color: '#DC2626' }
+    if (aqi <= 200) return { text: 'Moderate', color: '#FFB800' }
+    if (aqi <= 300) return { text: 'Poor', color: '#FF3366' }
     return { text: 'Very Poor', color: '#7F1D1D' }
   }
 
@@ -36,11 +36,11 @@ const EnvironmentPanel: React.FC = () => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white border border-gray-200 rounded-xl p-6 h-full flex flex-col shadow-sm"
+      className="bg-cyber-card border border-cyber-border rounded-xl p-6 h-full flex flex-col "
     >
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-lg font-bold text-gray-900 flex items-center">
+        <h2 className="text-lg font-bold text-white flex items-center">
           <Leaf className="h-5 w-5 text-green-600 mr-2" />
           Environment
         </h2>
@@ -53,7 +53,7 @@ const EnvironmentPanel: React.FC = () => {
       <div className="flex-1 space-y-6 overflow-y-auto">
         {/* AQI Cities Grid */}
         <div>
-          <h3 className="text-sm font-medium text-gray-700 mb-3">Air Quality Index - Major Cities</h3>
+          <h3 className="text-sm font-medium text-gray-300 mb-3">Air Quality Index - Major Cities</h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
             {mockAQIData.map((city, index) => {
               const category = getAQICategory(city.aqi)
@@ -63,11 +63,11 @@ const EnvironmentPanel: React.FC = () => {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-gray-50 border border-gray-200 rounded-lg p-3 hover:shadow-sm transition-all duration-200"
+                  className="bg-cyber-bg border border-cyber-border rounded-lg p-3 hover: transition-all duration-200"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div>
-                      <h4 className="font-semibold text-gray-900 text-sm">{city.city}</h4>
+                      <h4 className="font-semibold text-white text-sm">{city.city}</h4>
                       <p className="text-xs text-gray-500">{city.state}</p>
                     </div>
                     <div 
@@ -100,7 +100,7 @@ const EnvironmentPanel: React.FC = () => {
 
         {/* Weather Alerts */}
         <div>
-          <h3 className="text-sm font-medium text-gray-700 mb-3">Weather Alerts</h3>
+          <h3 className="text-sm font-medium text-gray-300 mb-3">Weather Alerts</h3>
           <div className="space-y-2">
             {mockWeatherAlerts.map((alert, index) => {
               const Icon = alert.icon
@@ -122,7 +122,7 @@ const EnvironmentPanel: React.FC = () => {
                     }`} 
                   />
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-sm font-medium text-gray-900">{alert.type}</h4>
+                    <h4 className="text-sm font-medium text-white">{alert.type}</h4>
                     <p className="text-xs text-gray-500">{alert.location}</p>
                   </div>
                   <div 
@@ -141,9 +141,9 @@ const EnvironmentPanel: React.FC = () => {
         </div>
 
         {/* Temperature Overview */}
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-          <h3 className="text-sm font-medium text-gray-700 mb-3 flex items-center">
-            <Thermometer className="h-4 w-4 text-primary mr-2" />
+        <div className="bg-cyber-bg border border-cyber-border rounded-lg p-4">
+          <h3 className="text-sm font-medium text-gray-300 mb-3 flex items-center">
+            <Thermometer className="h-4 w-4 text-neon-cyan mr-2" />
             Temperature Range Today
           </h3>
           <div className="grid grid-cols-3 gap-4 text-center">
@@ -164,14 +164,14 @@ const EnvironmentPanel: React.FC = () => {
 
         {/* Quick Environment Stats */}
         <div className="grid grid-cols-2 gap-3">
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 text-center">
+          <div className="bg-cyber-bg border border-cyber-border rounded-lg p-3 text-center">
             <Leaf className="h-6 w-6 text-green-600 mx-auto mb-1" />
-            <div className="text-lg font-mono font-bold text-gray-900">24%</div>
+            <div className="text-lg font-mono font-bold text-white">24%</div>
             <p className="text-xs text-gray-500">Forest Cover</p>
           </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 text-center">
-            <Cloud className="h-6 w-6 text-primary mx-auto mb-1" />
-            <div className="text-lg font-mono font-bold text-gray-900">67%</div>
+          <div className="bg-cyber-bg border border-cyber-border rounded-lg p-3 text-center">
+            <Cloud className="h-6 w-6 text-neon-cyan mx-auto mb-1" />
+            <div className="text-lg font-mono font-bold text-white">67%</div>
             <p className="text-xs text-gray-500">Humidity Avg</p>
           </div>
         </div>

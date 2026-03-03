@@ -25,16 +25,16 @@ const upcoming = [
 const ElectionMap: React.FC = () => (
   <DashboardLayout>
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900 flex items-center"><Vote className="h-6 w-6 mr-2 text-primary" />Election Map</h2>
+      <h2 className="text-2xl font-bold text-white flex items-center"><Vote className="h-6 w-6 mr-2 text-neon-cyan" />Election Map</h2>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-6 shadow-card">
+        <div className="lg:col-span-2 bg-cyber-card rounded-xl border border-cyber-border p-6 shadow-card">
           <h3 className="text-lg font-semibold mb-4">State Ruling Parties</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {stateParties.map(s => (
-              <motion.div key={s.state} whileHover={{ scale: 1.02 }} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg border border-gray-100">
+              <motion.div key={s.state} whileHover={{ scale: 1.02 }} className="flex items-center space-x-3 p-3 bg-cyber-bg rounded-lg border border-cyber-border">
                 <div className={`w-4 h-4 rounded-full ${partyColors[s.party] || 'bg-gray-400'}`} />
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-gray-900">{s.state}</p>
+                  <p className="text-sm font-semibold text-white">{s.state}</p>
                   <p className="text-xs text-gray-500">{s.party} - {s.won}/{s.seats} seats</p>
                 </div>
                 <div className="w-16 h-2 bg-gray-200 rounded-full"><div className={`h-full rounded-full ${partyColors[s.party] || 'bg-gray-400'}`} style={{ width: `${(s.won/s.seats)*100}%` }} /></div>
@@ -43,20 +43,20 @@ const ElectionMap: React.FC = () => (
           </div>
         </div>
         <div className="space-y-4">
-          <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-card">
-            <h3 className="text-lg font-semibold mb-4 flex items-center"><Calendar className="h-5 w-5 mr-2 text-primary" />Upcoming Elections</h3>
+          <div className="bg-cyber-card rounded-xl border border-cyber-border p-6 shadow-card">
+            <h3 className="text-lg font-semibold mb-4 flex items-center"><Calendar className="h-5 w-5 mr-2 text-neon-cyan" />Upcoming Elections</h3>
             {upcoming.map(u => (
-              <div key={u.state} className="flex items-center justify-between p-3 border-b border-gray-100 last:border-0">
-                <div><p className="font-medium text-gray-900">{u.state}</p><p className="text-xs text-gray-500">{u.type}</p></div>
-                <span className="text-sm font-semibold text-primary">{u.date}</span>
+              <div key={u.state} className="flex items-center justify-between p-3 border-b border-cyber-border last:border-0">
+                <div><p className="font-medium text-white">{u.state}</p><p className="text-xs text-gray-500">{u.type}</p></div>
+                <span className="text-sm font-semibold text-neon-cyan">{u.date}</span>
               </div>
             ))}
           </div>
-          <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-card">
+          <div className="bg-cyber-card rounded-xl border border-cyber-border p-6 shadow-card">
             <h3 className="text-lg font-semibold mb-3">Party Legend</h3>
             <div className="grid grid-cols-2 gap-2">
               {Object.entries(partyColors).map(([p, c]) => (
-                <div key={p} className="flex items-center space-x-2"><div className={`w-3 h-3 rounded-full ${c}`} /><span className="text-sm text-gray-700">{p}</span></div>
+                <div key={p} className="flex items-center space-x-2"><div className={`w-3 h-3 rounded-full ${c}`} /><span className="text-sm text-gray-300">{p}</span></div>
               ))}
             </div>
           </div>

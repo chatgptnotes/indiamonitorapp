@@ -17,11 +17,11 @@ interface MarketData {
 }
 
 const sectorData = [
-  { name: 'IT', value: 28.5, color: '#1E40AF' },
-  { name: 'Banking', value: 24.2, color: '#3B82F6' },
+  { name: 'IT', value: 28.5, color: '#00F0FF' },
+  { name: 'Banking', value: 24.2, color: '#00F0FF' },
   { name: 'Pharma', value: 18.7, color: '#0EA5E9' },
-  { name: 'Auto', value: 15.3, color: '#F59E0B' },
-  { name: 'Energy', value: 13.3, color: '#16A34A' }
+  { name: 'Auto', value: 15.3, color: '#FFB800' },
+  { name: 'Energy', value: 13.3, color: '#00FF88' }
 ]
 
 const EconomyPanel: React.FC = () => {
@@ -80,12 +80,12 @@ const EconomyPanel: React.FC = () => {
     <motion.div
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
-      className="bg-white border border-gray-200 rounded-xl p-6 h-full flex flex-col shadow-sm"
+      className="bg-cyber-card border border-cyber-border rounded-xl p-6 h-full flex flex-col "
     >
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-lg font-bold text-gray-900 flex items-center">
-          <BarChart3 className="h-5 w-5 text-primary mr-2" />
+        <h2 className="text-lg font-bold text-white flex items-center">
+          <BarChart3 className="h-5 w-5 text-neon-cyan mr-2" />
           Economy
         </h2>
         <div className="flex items-center space-x-1 text-xs">
@@ -100,13 +100,13 @@ const EconomyPanel: React.FC = () => {
           {/* BSE Sensex */}
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-sm font-medium text-gray-700">BSE Sensex</span>
+              <span className="text-sm font-medium text-gray-300">BSE Sensex</span>
               <div className={`flex items-center space-x-1 text-sm font-medium ${getChangeColor(marketData.change.sensex)}`}>
                 {getChangeIcon(marketData.change.sensex)}
                 <span>{marketData.change.sensex > 0 ? '+' : ''}{marketData.change.sensex.toFixed(2)}%</span>
               </div>
             </div>
-            <div className="text-2xl font-mono font-bold text-gray-900">
+            <div className="text-2xl font-mono font-bold text-white">
               {formatCurrency(marketData.sensex)}
             </div>
           </div>
@@ -114,13 +114,13 @@ const EconomyPanel: React.FC = () => {
           {/* NSE Nifty */}
           <div className="bg-green-50 border border-green-200 rounded-lg p-4">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-sm font-medium text-gray-700">NSE Nifty</span>
+              <span className="text-sm font-medium text-gray-300">NSE Nifty</span>
               <div className={`flex items-center space-x-1 text-sm font-medium ${getChangeColor(marketData.change.nifty)}`}>
                 {getChangeIcon(marketData.change.nifty)}
                 <span>{marketData.change.nifty > 0 ? '+' : ''}{marketData.change.nifty.toFixed(2)}%</span>
               </div>
             </div>
-            <div className="text-2xl font-mono font-bold text-gray-900">
+            <div className="text-2xl font-mono font-bold text-white">
               {formatCurrency(marketData.nifty)}
             </div>
           </div>
@@ -128,22 +128,22 @@ const EconomyPanel: React.FC = () => {
           {/* INR/USD */}
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-sm font-medium text-gray-700">INR/USD</span>
+              <span className="text-sm font-medium text-gray-300">INR/USD</span>
               <div className={`flex items-center space-x-1 text-sm font-medium ${getChangeColor(marketData.change.inrUsd)}`}>
                 {getChangeIcon(marketData.change.inrUsd)}
                 <span>{marketData.change.inrUsd > 0 ? '+' : ''}{marketData.change.inrUsd.toFixed(2)}%</span>
               </div>
             </div>
-            <div className="text-2xl font-mono font-bold text-gray-900">
+            <div className="text-2xl font-mono font-bold text-white">
               ₹{marketData.inrUsd.toFixed(2)}
             </div>
           </div>
         </div>
 
         {/* GDP Growth */}
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+        <div className="bg-cyber-bg border border-cyber-border rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700">GDP Growth Rate</span>
+            <span className="text-sm font-medium text-gray-300">GDP Growth Rate</span>
             <TrendingUp className="h-4 w-4 text-green-600" />
           </div>
           <div className="text-2xl font-mono font-bold text-green-600">
@@ -153,8 +153,8 @@ const EconomyPanel: React.FC = () => {
         </div>
 
         {/* Sector Breakdown */}
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-          <h3 className="text-sm font-medium text-gray-700 mb-3">Sector Performance</h3>
+        <div className="bg-cyber-bg border border-cyber-border rounded-lg p-4">
+          <h3 className="text-sm font-medium text-gray-300 mb-3">Sector Performance</h3>
           <div className="h-32">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={sectorData}>
@@ -172,8 +172,8 @@ const EconomyPanel: React.FC = () => {
                 />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: '#FFFFFF',
-                    border: '1px solid #D1D5DB',
+                    backgroundColor: "#1A1F2E",
+                    border: '1px solid #2A2F3E',
                     borderRadius: '8px',
                     fontSize: '12px',
                     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
@@ -181,7 +181,7 @@ const EconomyPanel: React.FC = () => {
                 />
                 <Bar 
                   dataKey="value" 
-                  fill="#1E40AF"
+                  fill="#00F0FF"
                   radius={[4, 4, 0, 0]}
                 />
               </BarChart>
@@ -191,14 +191,14 @@ const EconomyPanel: React.FC = () => {
 
         {/* Quick Stats */}
         <div className="grid grid-cols-2 gap-3">
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 text-center">
-            <DollarSign className="h-6 w-6 text-primary mx-auto mb-1" />
-            <div className="text-lg font-mono font-bold text-gray-900">₹3.7T</div>
+          <div className="bg-cyber-bg border border-cyber-border rounded-lg p-3 text-center">
+            <DollarSign className="h-6 w-6 text-neon-cyan mx-auto mb-1" />
+            <div className="text-lg font-mono font-bold text-white">₹3.7T</div>
             <p className="text-xs text-gray-500">Market Cap</p>
           </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 text-center">
+          <div className="bg-cyber-bg border border-cyber-border rounded-lg p-3 text-center">
             <BarChart3 className="h-6 w-6 text-green-600 mx-auto mb-1" />
-            <div className="text-lg font-mono font-bold text-gray-900">2.4M</div>
+            <div className="text-lg font-mono font-bold text-white">2.4M</div>
             <p className="text-xs text-gray-500">Daily Volume</p>
           </div>
         </div>
