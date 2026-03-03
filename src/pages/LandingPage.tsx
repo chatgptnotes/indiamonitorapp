@@ -1,103 +1,64 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Activity, Map, AlertTriangle, TrendingUp, Shield, Eye } from 'lucide-react'
+import { Activity, Map, AlertTriangle, TrendingUp, Shield, Eye, BarChart3 } from 'lucide-react'
 
 const LandingPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-deep-navy via-deep-navy to-blue-900 relative">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{ 
-            rotate: 360,
-            scale: [1, 1.2, 1]
-          }}
-          transition={{ 
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-radial from-electric-blue/10 to-transparent rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ 
-            rotate: -360,
-            scale: [1, 1.5, 1]
-          }}
-          transition={{ 
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-radial from-neon-green/10 to-transparent rounded-full blur-3xl"
-        />
-      </div>
-      
-      {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-electric-blue/10 via-transparent to-neon-green/10"></div>
-        
-        {/* Grid pattern overlay */}
-        <div 
-          className="absolute inset-0 opacity-5" 
-          style={{
-            backgroundImage: `
-              linear-gradient(90deg, #00D4FF 1px, transparent 1px),
-              linear-gradient(0deg, #00D4FF 1px, transparent 1px)
-            `,
-            backgroundSize: '50px 50px'
-          }}
-        />
-        
-        {/* Navigation */}
-        <nav className="relative z-10 flex justify-between items-center p-6 lg:px-12">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex items-center space-x-2"
-          >
-            <Activity className="h-8 w-8 text-electric-blue" />
-            <span className="text-2xl font-bold text-white">IndiaMonitor</span>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex space-x-4"
-          >
-            <Link 
-              to="/login" 
-              className="px-6 py-2 border-2 border-electric-blue/50 text-electric-blue rounded-lg hover:border-electric-blue hover:bg-electric-blue/10 transition-all duration-300 font-semibold backdrop-blur-sm"
+    <div className="min-h-screen bg-white relative">
+      {/* Navigation */}
+      <nav className="bg-white shadow-sm border-b border-gray-200 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="flex justify-between items-center py-4">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="flex items-center space-x-2"
             >
-              Login
-            </Link>
-            <Link 
-              to="/signup" 
-              className="px-6 py-2 bg-electric-blue text-deep-navy rounded-lg hover:bg-electric-blue/90 transition-all duration-300 font-semibold shadow-lg shadow-electric-blue/25 hover:shadow-electric-blue/40"
+              <Activity className="h-8 w-8 text-primary" />
+              <span className="text-2xl font-bold text-gray-900">IndiaMonitor</span>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="flex space-x-4"
             >
-              Sign Up
-            </Link>
-          </motion.div>
-        </nav>
+              <Link 
+                to="/login" 
+                className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:border-primary hover:text-primary transition-all duration-300 font-medium"
+              >
+                Login
+              </Link>
+              <Link 
+                to="/signup" 
+                className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-300 font-medium shadow-sm"
+              >
+                Sign Up
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </nav>
 
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-32">
+      {/* Hero Section */}
+      <div className="bg-white py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Real-time Intelligence
-              <br />
-              <span className="text-electric-blue">Dashboard for India</span>
+            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              India's Real-Time{' '}
+              <span className="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
+                Intelligence Dashboard
+              </span>
             </h1>
             
-            <p className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
-              Monitor India's pulse with comprehensive data on economy, environment, 
-              infrastructure, and emergency alerts in one unified command center.
+            <p className="text-xl lg:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto">
+              Monitor India's economic indicators, environmental data, and infrastructure status with real-time analytics and comprehensive reporting.
             </p>
             
             <motion.div 
@@ -112,10 +73,9 @@ const LandingPage: React.FC = () => {
               >
                 <Link 
                   to="/signup"
-                  className="px-8 py-4 bg-gradient-to-r from-electric-blue to-neon-green text-deep-navy rounded-lg hover:from-electric-blue/90 hover:to-neon-green/90 transition-all duration-300 font-semibold text-lg shadow-lg shadow-electric-blue/30 hover:shadow-neon-green/30 border border-electric-blue/50 relative overflow-hidden group"
+                  className="px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary-dark transition-all duration-300 font-semibold text-lg shadow-md hover:shadow-lg"
                 >
-                  <span className="relative z-10">Start Monitoring</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-neon-green/20 to-electric-blue/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  Get Started
                 </Link>
               </motion.div>
               <motion.div
@@ -124,72 +84,96 @@ const LandingPage: React.FC = () => {
               >
                 <Link 
                   to="/login"
-                  className="px-8 py-4 border-2 border-electric-blue text-white rounded-lg hover:bg-electric-blue/10 hover:border-neon-green transition-all duration-300 font-semibold text-lg backdrop-blur-sm relative overflow-hidden group"
+                  className="px-8 py-4 border-2 border-primary text-primary rounded-xl hover:bg-primary hover:text-white transition-all duration-300 font-semibold text-lg"
                 >
-                  <span className="relative z-10">View Demo</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-electric-blue/5 to-neon-green/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  View Demo
                 </Link>
               </motion.div>
             </motion.div>
           </motion.div>
 
-          {/* India Silhouette Animation */}
+          {/* India Map Illustration */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6, duration: 1 }}
             className="mt-20 relative"
           >
-            <div className="w-full max-w-3xl mx-auto opacity-30">
-              <svg viewBox="0 0 800 800" className="w-full h-auto">
+            <div className="w-full max-w-4xl mx-auto">
+              <svg viewBox="0 0 800 600" className="w-full h-auto">
+                {/* Proper India Map Outline - Simplified but accurate */}
                 <motion.path 
-                  d="M300 100 L350 90 L400 95 L450 105 L500 120 L530 140 L550 160 L565 185 L570 210 L575 235 L580 260 L585 285 L590 310 L595 335 L600 360 L605 385 L610 410 L615 435 L620 460 L625 485 L630 510 L635 535 L640 560 L635 580 L625 595 L610 605 L590 610 L565 605 L540 595 L515 580 L490 560 L465 535 L440 505 L415 470 L390 430 L365 385 L340 335 L320 280 L310 220 L305 160 Z M200 300 L180 320 L160 345 L145 375 L135 410 L130 450 L135 490 L150 525 L175 555 L210 580 L250 600 L295 615 L340 625 L385 630 L430 625 L475 615 L520 600 L560 580 L595 555 L625 525 L650 490 L670 450 L685 410 L695 370 L700 330 L705 290 L710 250 L715 210 L720 170 L715 130 L700 95 L675 65 L640 40 L595 25 L545 20 L490 25 L435 40 L385 65 L340 100 L300 145"
+                  d="M150 200 C200 180, 250 175, 300 180 L350 185 L400 190 L450 200 L500 210 L530 220 L550 240 L565 265 L570 290 L575 315 L580 340 L585 365 L590 390 L595 415 L600 440 L605 465 L595 480 L580 490 L560 495 L530 490 L500 480 L470 465 L440 445 L410 420 L380 390 L350 355 L320 315 L300 270 L290 225 L280 200 L250 185 L220 180 L190 185 L165 195 Z M120 280 L100 300 L85 325 L75 355 L70 385 L75 415 L90 440 L115 460 L145 475 L180 485 L220 490 L260 495 L300 500 L340 505 L380 510 L420 515 L460 520 L500 525 L540 530 L575 535 L605 540 L625 550 L640 565 L650 585 L655 605 L650 625 L635 640 L610 650 L580 655 L545 650 L505 640 L460 625 L410 605 L355 580 L300 550 L245 515 L190 475 L140 430 L100 380 L85 325 L90 275 L105 235 L130 200"
                   fill="none"
-                  stroke="url(#indiaGradient)"
-                  strokeWidth="3"
-                  strokeDasharray="2000"
-                  initial={{ strokeDashoffset: 2000 }}
+                  stroke="#1E40AF"
+                  strokeWidth="2"
+                  strokeDasharray="1500"
+                  initial={{ strokeDashoffset: 1500 }}
                   animate={{ strokeDashoffset: 0 }}
-                  transition={{ delay: 1, duration: 4, ease: "easeInOut" }}
+                  transition={{ delay: 1, duration: 3, ease: "easeInOut" }}
                 />
                 <motion.path 
-                  d="M300 100 C350 85, 450 85, 500 120 C550 155, 580 210, 585 285 C590 360, 600 435, 620 485 C640 535, 635 580, 590 610 C540 640, 465 635, 390 630 C315 625, 240 620, 180 595 C120 570, 80 525, 85 470 C90 415, 130 360, 180 320 C230 280, 280 240, 300 200 C320 160, 300 130, 300 100 Z"
-                  fill="url(#indiaFillGradient)"
+                  d="M150 200 C200 180, 250 175, 300 180 L450 200 L530 220 L570 290 L590 390 L605 465 L580 490 L440 445 L320 315 L290 225 L190 185 Z M120 280 L85 325 L70 385 L90 440 L180 485 L340 505 L500 525 L625 550 L655 605 L610 650 L460 625 L300 550 L140 430 L85 325 Z"
+                  fill="#1E40AF"
                   opacity="0.1"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 0.1 }}
                   transition={{ delay: 2.5, duration: 2 }}
                 />
-                <defs>
-                  <linearGradient id="indiaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#00D4FF" />
-                    <stop offset="50%" stopColor="#00FF88" />
-                    <stop offset="100%" stopColor="#00D4FF" />
-                  </linearGradient>
-                  <radialGradient id="indiaFillGradient" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="#00FF88" opacity="0.2" />
-                    <stop offset="100%" stopColor="#00D4FF" opacity="0.05" />
-                  </radialGradient>
-                </defs>
+                
+                {/* Data Points */}
+                <motion.g
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 3.5, duration: 1 }}
+                >
+                  <circle cx="300" cy="250" r="4" fill="#3B82F6" className="animate-pulse" />
+                  <circle cx="450" cy="300" r="4" fill="#10B981" className="animate-pulse" />
+                  <circle cx="250" cy="350" r="4" fill="#F59E0B" className="animate-pulse" />
+                  <circle cx="500" cy="400" r="4" fill="#EF4444" className="animate-pulse" />
+                </motion.g>
               </svg>
-              
-              {/* Glowing border effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-electric-blue/5 via-transparent to-neon-green/5 rounded-full blur-3xl"></div>
             </div>
           </motion.div>
         </div>
       </div>
 
+      {/* Stats Section */}
+      <div className="bg-gray-50 py-16">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            {[
+              { label: "States", value: "28" },
+              { label: "Union Territories", value: "8" },
+              { label: "Data Points", value: "100+" },
+              { label: "Real-time Updates", value: "24/7" }
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="space-y-2"
+              >
+                <div className="text-3xl lg:text-4xl font-bold text-primary">{stat.value}</div>
+                <div className="text-gray-600 font-medium">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Features Section */}
-      <div className="py-24 bg-deep-navy/50">
+      <div className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl lg:text-5xl font-bold text-center text-white mb-16"
+            className="text-4xl lg:text-5xl font-bold text-center text-gray-900 mb-16"
           >
-            Command Center Features
+            Comprehensive Monitoring
           </motion.h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -197,32 +181,32 @@ const LandingPage: React.FC = () => {
               {
                 icon: Map,
                 title: "Interactive India Map",
-                description: "Explore all 28 states and 8 UTs with real-time data overlays, population density, and economic indicators."
+                description: "Explore all 28 states and 8 UTs with real-time data overlays, population metrics, and regional insights."
               },
               {
                 icon: TrendingUp,
                 title: "Economic Dashboard",
-                description: "Live BSE Sensex, NSE Nifty, GDP trends, and sector-wise analysis with beautiful charts and analytics."
+                description: "Track BSE Sensex, NSE Nifty, GDP trends, and sector-wise economic indicators with live updates."
               },
               {
                 icon: Eye,
                 title: "Environmental Monitoring",
-                description: "AQI tracking for major cities, weather alerts, and environmental trend analysis across regions."
+                description: "Monitor air quality index (AQI) for major cities, weather patterns, and environmental trends."
               },
               {
                 icon: AlertTriangle,
-                title: "Emergency Alerts",
-                description: "Real-time alerts for natural disasters, security incidents, and infrastructure disruptions."
+                title: "Real-time Alerts",
+                description: "Receive instant notifications for natural disasters, security incidents, and infrastructure issues."
               },
               {
                 icon: Shield,
-                title: "Infrastructure Status",
-                description: "Monitor power grid, railway networks, and transportation systems across all regions."
+                title: "Infrastructure Tracking",
+                description: "Monitor power grids, transportation networks, and critical infrastructure across regions."
               },
               {
-                icon: Activity,
-                title: "Real-time Analytics",
-                description: "Live data streams, trend analysis, and comprehensive reporting with advanced visualizations."
+                icon: BarChart3,
+                title: "Advanced Analytics",
+                description: "Comprehensive data visualization, trend analysis, and detailed reporting capabilities."
               }
             ].map((feature, index) => (
               <motion.div
@@ -231,27 +215,50 @@ const LandingPage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-deep-navy/50 border border-electric-blue/20 rounded-lg p-6 hover:border-electric-blue/40 transition-colors"
+                className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-all duration-300 hover:border-primary/20"
               >
-                <feature.icon className="h-12 w-12 text-electric-blue mb-4" />
-                <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-gray-300">{feature.description}</p>
+                <div className="bg-primary/10 rounded-lg p-3 w-fit mb-4">
+                  <feature.icon className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </div>
 
+      {/* CTA Section */}
+      <div className="bg-primary py-16">
+        <div className="max-w-4xl mx-auto text-center px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+              Start Monitoring India Today
+            </h2>
+            <p className="text-xl text-blue-100 mb-8">
+              Get instant access to real-time data and insights that matter.
+            </p>
+            <Link
+              to="/signup"
+              className="inline-block px-8 py-4 bg-white text-primary rounded-xl hover:bg-gray-50 transition-all duration-300 font-semibold text-lg shadow-md"
+            >
+              Get Started
+            </Link>
+          </motion.div>
+        </div>
+      </div>
+
       {/* Footer */}
-      <footer className="bg-deep-navy border-t border-electric-blue/20 py-8 relative">
+      <footer className="bg-gray-50 border-t border-gray-200 py-12">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
-          <div className="text-gray-500 text-sm space-y-1">
+          <div className="text-gray-500 text-sm space-y-2">
             <p>drmhope.com | A Bettroi Product</p>
-            <p className="text-xs text-gray-600">
-              IndiaMonitor v1.0 | Built with React & TypeScript | 
-              <a href="https://github.com/chatgptnotes/indiamonitorapp" className="text-electric-blue/60 hover:text-electric-blue ml-1">
-                GitHub
-              </a>
+            <p className="text-xs text-gray-400">
+              IndiaMonitor v1.0 | {new Date().toLocaleDateString()} | Built with React & TypeScript
             </p>
           </div>
         </div>

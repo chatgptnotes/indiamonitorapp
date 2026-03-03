@@ -13,11 +13,11 @@ const Dashboard: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-deep-navy flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          className="rounded-full h-16 w-16 border-4 border-electric-blue border-t-transparent"
+          className="rounded-full h-16 w-16 border-4 border-primary border-t-transparent"
         />
       </div>
     )

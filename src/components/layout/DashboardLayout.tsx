@@ -39,19 +39,19 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   }
 
   return (
-    <div className="h-screen flex bg-deep-navy">
+    <div className="h-screen flex bg-gray-50">
       {/* Sidebar */}
-      <div className={`${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-50 w-64 bg-deep-navy/80 backdrop-blur-xl border-r border-electric-blue/20 transition-transform duration-300 ease-in-out`}>
+      <div className={`${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 transition-transform duration-300 ease-in-out shadow-sm`}>
         <div className="flex flex-col h-full">
           {/* Logo */}
-          <div className="flex items-center justify-between h-16 px-4 border-b border-electric-blue/20">
+          <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200">
             <Link to="/dashboard" className="flex items-center space-x-2">
-              <Activity className="h-8 w-8 text-electric-blue" />
-              <span className="text-xl font-bold text-white">IndiaMonitor</span>
+              <Activity className="h-8 w-8 text-primary" />
+              <span className="text-xl font-bold text-gray-900">IndiaMonitor</span>
             </Link>
             <button
               onClick={() => setSidebarOpen(false)}
-              className="lg:hidden text-gray-400 hover:text-white"
+              className="lg:hidden text-gray-400 hover:text-gray-600"
             >
               <X className="h-6 w-6" />
             </button>
@@ -68,9 +68,9 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                   onClick={() => setSidebarOpen(false)}
                   className={`${
                     item.current
-                      ? 'bg-electric-blue/10 border-electric-blue text-electric-blue'
-                      : 'text-gray-300 hover:bg-electric-blue/5 hover:text-white border-transparent'
-                  } group flex items-center px-2 py-2 text-sm font-medium rounded-md border transition-colors`}
+                      ? 'bg-primary text-white'
+                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                  } group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors`}
                 >
                   <Icon className="mr-3 h-5 w-5" />
                   {item.name}
@@ -80,21 +80,21 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           </nav>
 
           {/* User Menu */}
-          <div className="border-t border-electric-blue/20 p-4">
+          <div className="border-t border-gray-200 p-4">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="bg-electric-blue/20 rounded-full p-2">
-                <User className="h-5 w-5 text-electric-blue" />
+              <div className="bg-gray-100 rounded-full p-2">
+                <User className="h-5 w-5 text-gray-600" />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-white truncate">
+                <p className="text-sm font-medium text-gray-900 truncate">
                   {user?.email || 'User'}
                 </p>
-                <p className="text-xs text-gray-400">Analyst</p>
+                <p className="text-xs text-gray-500">Analyst</p>
               </div>
             </div>
             <button
               onClick={handleSignOut}
-              className="w-full flex items-center px-2 py-2 text-sm text-gray-300 hover:text-white hover:bg-electric-blue/5 rounded-md transition-colors"
+              className="w-full flex items-center px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
             >
               <LogOut className="mr-3 h-4 w-4" />
               Sign Out
@@ -106,18 +106,18 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="bg-deep-navy/50 backdrop-blur-xl border-b border-electric-blue/20">
+        <header className="bg-white border-b border-gray-200 shadow-sm">
           <div className="flex items-center justify-between h-16 px-4 lg:px-6">
             <button
               onClick={() => setSidebarOpen(true)}
-              className="lg:hidden text-gray-400 hover:text-white"
+              className="lg:hidden text-gray-400 hover:text-gray-600"
             >
               <Menu className="h-6 w-6" />
             </button>
             
             <div className="flex items-center space-x-4">
-              <h1 className="text-xl font-semibold text-white">
-                {location.pathname === '/dashboard' && 'Command Center'}
+              <h1 className="text-xl font-semibold text-gray-900">
+                {location.pathname === '/dashboard' && 'Dashboard'}
                 {location.pathname === '/analytics' && 'Analytics'}
                 {location.pathname === '/settings' && 'Settings'}
               </h1>
@@ -125,15 +125,15 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
 
             <div className="flex items-center space-x-4">
               <div className="hidden lg:flex items-center space-x-2 text-sm">
-                <div className="h-2 w-2 bg-neon-green rounded-full animate-pulse"></div>
-                <span className="text-gray-400">Live Data</span>
+                <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-gray-500">Live Data</span>
               </div>
             </div>
           </div>
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-auto p-4 lg:p-6">
+        <main className="flex-1 overflow-auto bg-gray-50 p-4 lg:p-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

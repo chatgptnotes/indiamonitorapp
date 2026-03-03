@@ -120,24 +120,24 @@ const AlertsPanel: React.FC = () => {
     switch (severity) {
       case 'critical':
         return {
-          border: 'border-alert-red/50',
-          bg: 'bg-alert-red/5',
-          text: 'text-alert-red',
-          glow: 'shadow-alert-red/20'
+          border: 'border-red-200',
+          bg: 'bg-red-50',
+          text: 'text-red-700',
+          glow: 'shadow-sm'
         }
       case 'warning':
         return {
-          border: 'border-amber/50',
-          bg: 'bg-amber/5',
-          text: 'text-amber',
-          glow: 'shadow-amber/20'
+          border: 'border-orange-200',
+          bg: 'bg-orange-50',
+          text: 'text-orange-700',
+          glow: 'shadow-sm'
         }
       default:
         return {
-          border: 'border-electric-blue/50',
-          bg: 'bg-electric-blue/5',
-          text: 'text-electric-blue',
-          glow: 'shadow-electric-blue/20'
+          border: 'border-blue-200',
+          bg: 'bg-blue-50',
+          text: 'text-blue-700',
+          glow: 'shadow-sm'
         }
     }
   }
@@ -145,11 +145,11 @@ const AlertsPanel: React.FC = () => {
   const getSeverityBadge = (severity: string | undefined) => {
     switch (severity) {
       case 'critical':
-        return 'bg-alert-red text-white'
+        return 'bg-red-600 text-white'
       case 'warning':
-        return 'bg-amber text-deep-navy'
+        return 'bg-orange-500 text-white'
       default:
-        return 'bg-electric-blue text-deep-navy'
+        return 'bg-blue-600 text-white'
     }
   }
 
@@ -157,21 +157,21 @@ const AlertsPanel: React.FC = () => {
     <motion.div
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
-      className="bg-deep-navy/30 backdrop-blur-xl border border-electric-blue/30 rounded-lg p-4 h-full flex flex-col"
+      className="bg-white border border-gray-200 rounded-xl p-6 h-full flex flex-col shadow-sm"
     >
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-bold text-white flex items-center">
-          <AlertTriangle className="h-5 w-5 text-alert-red mr-2" />
-          Alerts
+        <h2 className="text-lg font-bold text-gray-900 flex items-center">
+          <AlertTriangle className="h-5 w-5 text-danger mr-2" />
+          Live Alerts
         </h2>
         <div className="flex items-center space-x-2">
           <button
             onClick={() => setIsScrolling(!isScrolling)}
-            className={`w-2 h-2 rounded-full ${isScrolling ? 'bg-neon-green animate-pulse' : 'bg-gray-500'}`}
+            className={`w-2 h-2 rounded-full ${isScrolling ? 'bg-success animate-pulse' : 'bg-gray-400'}`}
             title={isScrolling ? 'Auto-scrolling' : 'Paused'}
           />
-          <span className="text-xs text-gray-400">
+          <span className="text-xs text-gray-600 bg-red-50 px-2 py-1 rounded-full">
             {allAlerts.filter(a => a.severity === 'critical').length} Critical
           </span>
         </div>
@@ -204,17 +204,17 @@ const AlertsPanel: React.FC = () => {
                         <Icon className={`h-6 w-6 ${styles.text} mt-1 flex-shrink-0`} />
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between mb-2">
-                            <h3 className="font-semibold text-white text-sm leading-tight">
+                            <h3 className="font-semibold text-gray-900 text-sm leading-tight">
                               {alert.title}
                             </h3>
-                            <span className={`px-2 py-1 rounded text-xs font-medium ${getSeverityBadge(alert.severity)}`}>
+                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${getSeverityBadge(alert.severity)}`}>
                               {alert.severity.toUpperCase()}
                             </span>
                           </div>
-                          <p className="text-gray-300 text-sm mb-3 leading-relaxed">
+                          <p className="text-gray-600 text-sm mb-3 leading-relaxed">
                             {alert.description}
                           </p>
-                          <div className="space-y-1 text-xs text-gray-400">
+                          <div className="space-y-1 text-xs text-gray-500">
                             <div className="flex items-center space-x-1">
                               <MapPin className="h-3 w-3" />
                               <span>{alert.location}</span>
@@ -224,7 +224,7 @@ const AlertsPanel: React.FC = () => {
                                 <Clock className="h-3 w-3" />
                                 <span>{alert.timestamp || 'Just now'}</span>
                               </div>
-                              <span className="text-electric-blue">
+                              <span className="text-primary font-medium">
                                 {alert.source}
                               </span>
                             </div>
@@ -241,7 +241,7 @@ const AlertsPanel: React.FC = () => {
 
         {/* Alert List - Compact View */}
         <div className="flex-1 overflow-y-auto">
-          <h3 className="text-sm font-medium text-gray-300 mb-3">Recent Alerts</h3>
+          <h3 className="text-sm font-medium text-gray-700 mb-3">Recent Alerts</h3>
           <div className="space-y-2">
             {allAlerts.slice(0, 8).map((alert, index) => {
               if (index === currentAlertIndex) return null // Skip the featured alert
@@ -262,14 +262,14 @@ const AlertsPanel: React.FC = () => {
                     <Icon className={`h-4 w-4 ${styles.text} mt-0.5 flex-shrink-0`} />
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1">
-                        <h4 className="font-medium text-white text-sm truncate">
+                        <h4 className="font-medium text-gray-900 text-sm truncate">
                           {alert.title}
                         </h4>
                         <span className={`px-1.5 py-0.5 rounded text-xs font-medium ${getSeverityBadge(alert.severity)}`}>
                           {alert.severity[0].toUpperCase()}
                         </span>
                       </div>
-                      <p className="text-gray-400 text-xs mb-2 line-clamp-2">
+                      <p className="text-gray-600 text-xs mb-2 line-clamp-2">
                         {alert.description}
                       </p>
                       <div className="flex items-center justify-between text-xs text-gray-500">
@@ -285,26 +285,26 @@ const AlertsPanel: React.FC = () => {
         </div>
 
         {/* Alert Statistics */}
-        <div className="bg-deep-navy/50 border border-electric-blue/20 rounded-lg p-3">
-          <h4 className="text-sm font-medium text-gray-300 mb-2">Alert Summary</h4>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
+          <h4 className="text-sm font-medium text-gray-700 mb-2">Alert Summary</h4>
           <div className="grid grid-cols-3 gap-3 text-center">
             <div>
-              <div className="text-lg font-mono font-bold text-alert-red">
+              <div className="text-lg font-mono font-bold text-red-600">
                 {allAlerts.filter(a => a.severity === 'critical').length}
               </div>
-              <p className="text-xs text-gray-400">Critical</p>
+              <p className="text-xs text-gray-500">Critical</p>
             </div>
             <div>
-              <div className="text-lg font-mono font-bold text-amber">
+              <div className="text-lg font-mono font-bold text-orange-600">
                 {allAlerts.filter(a => a.severity === 'warning').length}
               </div>
-              <p className="text-xs text-gray-400">Warning</p>
+              <p className="text-xs text-gray-500">Warning</p>
             </div>
             <div>
-              <div className="text-lg font-mono font-bold text-electric-blue">
+              <div className="text-lg font-mono font-bold text-blue-600">
                 {allAlerts.filter(a => a.severity === 'info').length}
               </div>
-              <p className="text-xs text-gray-400">Info</p>
+              <p className="text-xs text-gray-500">Info</p>
             </div>
           </div>
         </div>
@@ -317,7 +317,7 @@ const AlertsPanel: React.FC = () => {
             key={index}
             onClick={() => setCurrentAlertIndex(index)}
             className={`w-2 h-2 rounded-full transition-colors ${
-              index === currentAlertIndex ? 'bg-electric-blue' : 'bg-gray-600'
+              index === currentAlertIndex ? 'bg-primary' : 'bg-gray-400'
             }`}
           />
         ))}
