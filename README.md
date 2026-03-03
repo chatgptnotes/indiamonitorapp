@@ -1,73 +1,155 @@
-# React + TypeScript + Vite
+# IndiaMonitor.app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🇮🇳 **Real-time Intelligence Dashboard for India**
 
-Currently, two official plugins are available:
+A comprehensive command center-style dashboard providing real-time insights into India's economy, environment, infrastructure, and emergency alerts.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
 
-## React Compiler
+- **Production:** https://indiamonitorapp.vercel.app
+- **GitHub:** https://github.com/chatgptnotes/indiamonitorapp
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend:** React 19 + Vite + TypeScript + Tailwind CSS
+- **Backend:** Supabase (Auth, Database, Storage, Real-time)
+- **Deployment:** Vercel (Auto-deploy from GitHub)
+- **Maps:** react-simple-maps with India TopoJSON
+- **Charts:** Recharts
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ✨ Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 🎯 Landing Page
+- Dark cyberpunk/command center aesthetic
+- Animated hero with India silhouette
+- Feature highlights and CTAs
+- "Powered by drmhope.com | A Bettroi Product" footer
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 🔐 Authentication
+- Supabase Auth with Email/Password
+- Magic Link authentication
+- Dark themed login/signup pages
+- Protected routes with session management
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 📊 Main Dashboard (Command Center)
+- **Interactive India Map:** All 28 states + 8 UTs with hover tooltips, color-coded metrics
+- **Economy Panel:** Live BSE Sensex, NSE Nifty, INR/USD, GDP trends, sector breakdowns
+- **Environment Panel:** AQI data for major cities, weather alerts, temperature monitoring
+- **Emergency Alerts:** Scrolling alert ticker with critical/warning/info levels
+- **Infrastructure Panel:** Power grid, railway, highway status monitoring
+
+### 🗺️ State Detail Pages
+- Click any state for detailed demographics, economy, environment data
+- Interactive charts and trend analysis
+- Recent alerts and statistics specific to each state
+
+### 📈 Analytics Dashboard
+- National trends over time (GDP, AQI, Population)
+- State comparison charts
+- Sector-wise economic breakdown
+- Environmental indicators and trends
+
+### ⚙️ Settings
+- Profile management with avatar upload
+- Notification preferences (alerts, email, push, reports)
+- Appearance settings (theme, language, density, animations)
+- Privacy & security controls
+- Data export functionality
+
+## 🗄️ Database Schema
+
+**Tables:**
+- `profiles` - User profile information
+- `states` - All Indian states and UTs data (population, GDP, AQI, etc.)
+- `alerts` - Emergency and system alerts
+- `economic_data` - Market data, indices, economic indicators
+- `aqi_data` - Air quality data for major cities
+
+**Features:**
+- Row Level Security (RLS) enabled on all tables
+- Real-time subscriptions for live data updates
+- Comprehensive seed data for all states/UTs
+
+## 🎨 Design System
+
+**Color Palette:**
+- Deep Navy: `#0A0E1A` (Background)
+- Electric Blue: `#00D4FF` (Primary)
+- Neon Green: `#00FF88` (Success)
+- Alert Red: `#FF3366` (Critical)
+- Amber: `#FFB800` (Warning)
+
+**Design Principles:**
+- Dark mode by default
+- Glassmorphism panels with subtle borders
+- Monospace fonts for data/numbers
+- Professional, high-density information display
+- Mobile-first responsive design
+
+## 🚀 Deployment
+
+The application is automatically deployed to Vercel on every push to the main branch:
+
+```bash
+# Environment Variables (already configured)
+VITE_SUPABASE_URL=https://zrayznjcskucudgpayos.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📱 Live Features
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+✅ **Landing page** with animated hero and feature showcase  
+✅ **Authentication system** with email/password and magic links  
+✅ **Interactive India map** with 36 states/UTs and real data  
+✅ **Real-time economy dashboard** with simulated live market data  
+✅ **Environmental monitoring** with AQI data for 20+ cities  
+✅ **Emergency alerts system** with scrolling ticker  
+✅ **Infrastructure monitoring** for power, railways, highways  
+✅ **State detail pages** with comprehensive data and charts  
+✅ **Analytics dashboard** with trends and comparisons  
+✅ **Settings panel** with full customization options  
+✅ **Mobile responsive** design across all components  
+✅ **Database** fully seeded with realistic Indian data  
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🔧 Development
+
+```bash
+# Clone the repository
+git clone https://github.com/chatgptnotes/indiamonitorapp.git
+cd indiamonitorapp
+
+# Install dependencies
+npm install --legacy-peer-deps
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Deploy to Vercel
+npx vercel --prod
 ```
+
+## 📊 Data Sources
+
+The application uses realistic mock data based on:
+- **Economic:** BSE, NSE, RBI, NSO official data patterns
+- **Environmental:** CPCB AQI standards and city data
+- **Geographic:** Official Indian states/UTs with accurate capitals
+- **Alerts:** Realistic emergency scenarios based on IMD, NDMA patterns
+
+## 🎯 Future Enhancements
+
+- Real API integrations with government data sources
+- Advanced data visualization and forecasting
+- User role-based access control
+- Notification system integration
+- Mobile app development
+- Multi-language support (Hindi)
+
+---
+
+**Built with ❤️ for India** | Powered by drmhope.com | A Bettroi Product
