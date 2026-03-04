@@ -75,7 +75,7 @@ const IndiaMap = () => {
       </div>
 
       <div className="relative h-96 lg:h-full min-h-[300px]">
-        <ComposableMap projection="geoMercator" projectionConfig={{ center: [78.9629, 20.5937], scale: 1000 }} style={{ width: "100%", height: "100%" }}>
+        <ComposableMap projection="geoMercator" projectionConfig={{ center: [78.9629, 20.5937], scale: 1100 }} style={{ width: "100%", height: "100%" }}>
           <Geographies geography={INDIA_TOPO_JSON}>
             {({ geographies }) => geographies.map(geo => {
               const sc = geo.properties.NAME_1 || geo.properties.NAME_1
@@ -85,7 +85,7 @@ const IndiaMap = () => {
                   onMouseLeave={() => setTooltip(null)}
                   onClick={() => handleStateClick(geo)}
                   style={{
-                    default: { fill: getColorByMetric(sc), stroke: '#1A1F2E', strokeWidth: 0.8, outline: 'none', opacity: 0.85 },
+                    default: { fill: getColorByMetric(sc), stroke: '#2A3040', strokeWidth: 1.2, outline: 'none', opacity: 1 },
                     hover: { fill: '#00F0FF', stroke: '#00F0FF', strokeWidth: 1.5, outline: 'none', cursor: 'pointer', opacity: 1 },
                     pressed: { fill: '#00B8C4', stroke: '#00F0FF', strokeWidth: 1.5, outline: 'none' }
                   }}
