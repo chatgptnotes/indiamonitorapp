@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { useData } from '../../contexts/DataContext'
 
-const INDIA_TOPO_JSON = "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/india/india-states.json"
+const INDIA_TOPO_JSON = "/india-states.json"
 
 interface TooltipData {
   name: string
@@ -46,12 +46,12 @@ const IndiaMap = () => {
   }
 
   const handleStateClick = (geo: any) => {
-    const stateCode = geo.properties.ST_NM || geo.properties.NAME_1
+    const stateCode = geo.properties.NAME_1 || geo.properties.NAME_1
     if (stateCode) navigate(`/state/${stateCode}`)
   }
 
   const handleMouseEnter = (geo: any, event: React.MouseEvent) => {
-    const stateName = geo.properties.ST_NM || geo.properties.NAME_1
+    const stateName = geo.properties.NAME_1 || geo.properties.NAME_1
     const state = states.find(s => s.name === stateName)
     const stateAlerts = alerts.filter(a => a.state_code === stateName).length
     setTooltip({ name: stateName, population: state?.population, aqi: state?.aqi_avg, alerts: stateAlerts, x: event.clientX, y: event.clientY })
@@ -78,7 +78,7 @@ const IndiaMap = () => {
         <ComposableMap projection="geoMercator" projectionConfig={{ center: [78.9629, 20.5937], scale: 1000 }} style={{ width: "100%", height: "100%" }}>
           <Geographies geography={INDIA_TOPO_JSON}>
             {({ geographies }) => geographies.map(geo => {
-              const sc = geo.properties.ST_NM || geo.properties.NAME_1
+              const sc = geo.properties.NAME_1 || geo.properties.NAME_1
               return (
                 <Geography key={geo.rsmKey} geography={geo}
                   onMouseEnter={(e) => handleMouseEnter(geo, e)}
